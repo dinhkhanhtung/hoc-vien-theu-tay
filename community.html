@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cộng Đồng Học Viên - Học viện Thêu tay Nguyễn Thị Hằng</title>
+  
+  <!-- Main CSS modules -->
+  <link rel="stylesheet" href="styles/main.css?v=1.4">
+  <link rel="stylesheet" href="styles/academy.css?v=1.4">
+  <link rel="stylesheet" href="styles/responsive.css?v=1.4">
+</head>
+<body>
+
+  <!-- ====================================================
+       HEADER / NAVIGATION BAR
+       ==================================================== -->
+  <nav class="header-nav">
+    <a href="index.html" class="logo">Nghệ Nhân <span>Nguyễn Thị Hằng</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Trang chủ</a></li>
+      <li><a href="academy.html">Cổng học tập</a></li>
+      <li class="active"><a href="community.html">Cộng đồng</a></li>
+      <li><a href="admin.html">Quản trị SaaS</a></li>
+    </ul>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <a href="academy.html" class="btn-primary nav-cta-desktop" style="padding: 8px 20px; font-size: 13px;">Vào Học viện</a>
+      <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle Menu">
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Navigation Drawer Overlay -->
+  <div class="mobile-drawer-overlay" id="mobile-drawer-overlay" onclick="toggleMobileMenu()"></div>
+  <div class="mobile-drawer" id="mobile-drawer">
+    <ul class="mobile-drawer-links">
+      <li><a href="index.html">Trang chủ</a></li>
+      <li><a href="academy.html">Cổng học tập</a></li>
+      <li class="active"><a href="community.html">Cộng đồng</a></li>
+      <li><a href="admin.html">Quản trị SaaS</a></li>
+    </ul>
+    <div style="border-top:1px solid rgba(255,255,255,0.05); padding-top:20px;">
+      <a href="academy.html" class="btn-primary" style="padding: 10px 20px; font-size: 14px; width:100%; justify-content:center; display:inline-flex;">Vào Học viện</a>
+    </div>
+  </div>
+
+  <!-- ====================================================
+       PORTAL LAYOUT (Sidebar + Main Content)
+       ==================================================== -->
+  <div class="portal-layout">
+    
+    <!-- Portal Sidebar (Đồng bộ với academy.html) -->
+    <aside class="portal-sidebar">
+      <div>
+        <div class="portal-sidebar-title" style="padding: 24px 20px; font-family: var(--font-display); font-size: 22px; font-weight: 700; color: white; border-bottom: 1px solid rgba(255,255,255,0.05);">
+          Học viện Portal
+        </div>
+        <ul class="portal-menu">
+          <li class="portal-menu-item">
+            <a href="academy.html#overview" class="portal-menu-link">
+              <span>📊</span> Tổng quan học tập
+            </a>
+          </li>
+          <li class="portal-menu-item">
+            <a href="academy.html#classroom" class="portal-menu-link">
+              <span>🎬</span> Lớp học của tôi
+            </a>
+          </li>
+          <li class="portal-menu-item">
+            <a href="academy.html#ai" class="portal-menu-link">
+              <span>🤖</span> AI Stitch Review
+            </a>
+          </li>
+          <li class="portal-menu-item">
+            <a href="community.html" class="portal-menu-link active">
+              <span>👥</span> Cộng đồng học viên
+            </a>
+          </li>
+          <li class="portal-menu-item">
+            <a href="academy.html#resources" class="portal-menu-link">
+              <span>📂</span> Thư viện tài nguyên
+            </a>
+          </li>
+          <li class="portal-menu-item">
+            <a href="academy.html#affiliate" class="portal-menu-link">
+              <span>🤝</span> Tiếp thị liên kết
+            </a>
+          </li>
+          <li class="portal-menu-item">
+            <a href="academy.html#cert" class="portal-menu-link">
+              <span>📜</span> Thi & Chứng chỉ
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="portal-profile-bar">
+        <div class="avatar">MT</div>
+        <div class="sa-profile-info">
+          <div class="sa-profile-name" style="color:white; font-weight:600;">Nguyễn Minh Thư</div>
+          <div class="sa-profile-role" style="color:var(--color-gold-light); font-size:11px;">Học viên xuất sắc</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="portal-main">
+      <div class="sa-header">
+        <div class="sa-title-welcome">
+          <h2>Diễn Đàn Thảo Luận Mỹ Nghệ</h2>
+          <p>Nơi chia sẻ các tác phẩm thêu tơ lụa thủ công và nhận góp ý từ cộng đồng học viên cô Hằng.</p>
+        </div>
+      </div>
+
+      <div class="com-layout">
+        <!-- Main Feed (Cột Trái) -->
+        <div>
+          <!-- Post Creation Box -->
+          <div class="com-post-box">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <span style="font-size: 13px; font-weight: 600; color: var(--color-charcoal);">Chủ đề bài đăng:</span>
+              <select id="post-tag-select" style="padding: 6px 12px; font-size: 12px; border: 1px solid var(--color-silk-dark); font-family: var(--font-ui); background: white; cursor: pointer; font-weight: 600;">
+                <option value="#TácPhẩmMới">🌸 Tác phẩm mới</option>
+                <option value="#HỏiĐápKỹThuật">❓ Hỏi đáp kỹ thuật</option>
+                <option value="#GópÝNghệNhân">✨ Góp ý nghệ nhân</option>
+              </select>
+            </div>
+            <textarea class="com-textarea" id="post-text-input" placeholder="Chia sẻ hình ảnh tác phẩm thêu mới hoàn thiện hoặc đặt câu hỏi cho lớp học thêu..."></textarea>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <button class="btn-secondary" style="padding: 8px 16px; font-size: 12px; border-radius: 4px;" onclick="addPostPhoto()">🖼 Đính kèm ảnh thêu mẫu</button>
+              <button class="btn-primary" style="padding: 8px 24px; font-size: 12px; border-radius: 4px;" onclick="submitCommunityPost()">Đăng bài viết</button>
+            </div>
+            <div id="attached-photo-indicator" style="font-size:11px; margin-top:10px; color:var(--color-gold-dark); display:none; font-weight:600;">✓ Đã đính kèm ảnh thêu hoa sen mẫu</div>
+          </div>
+
+          <!-- Filter Tabs -->
+          <div class="com-filter-bar" style="display: flex; gap: 8px; margin-bottom: 24px; overflow-x: auto; padding-bottom: 8px; border-bottom: 1px solid var(--color-silk-light); scrollbar-width: none;">
+            <button class="btn-secondary active-tag-filter" style="padding: 6px 16px; font-size: 12px; border-radius: 20px; background: var(--color-gold-light); color: var(--color-charcoal); border-color: var(--color-gold-dark);" onclick="filterFeed('all', this)">Tất cả</button>
+            <button class="btn-secondary" style="padding: 6px 16px; font-size: 12px; border-radius: 20px;" onclick="filterFeed('#TácPhẩmMới', this)">🌸 Tác phẩm mới</button>
+            <button class="btn-secondary" style="padding: 6px 16px; font-size: 12px; border-radius: 20px;" onclick="filterFeed('#HỏiĐápKỹThuật', this)">❓ Hỏi đáp kỹ thuật</button>
+            <button class="btn-secondary" style="padding: 6px 16px; font-size: 12px; border-radius: 20px;" onclick="filterFeed('#GópÝNghệNhân', this)">✨ Góp ý nghệ nhân</button>
+          </div>
+
+          <!-- Dynamic Feed Container -->
+          <div id="community-feed-container">
+            <!-- Rendered by js/community.js -->
+          </div>
+        </div>
+
+        <!-- Sidebar Leaderboard (Cột Phải) -->
+        <div>
+          <div class="leaderboard-panel">
+            <h3 class="leaderboard-title" style="font-family: var(--font-display); font-size: 20px; margin-bottom: 16px; border-bottom: 1px solid var(--color-silk-dark); padding-bottom: 10px; color: var(--color-charcoal); font-weight: 700; text-align: center;">🏆 Bảng Vàng Danh Dự</h3>
+            <div class="leaderboard-row">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span class="leaderboard-rank rank-1" style="font-size: 18px;">🥇</span> 
+                <strong style="color: var(--color-charcoal);">Minh Thư</strong>
+              </div>
+              <span style="color: var(--color-gold-dark); font-weight: 700;">1,250đ</span>
+            </div>
+            <div class="leaderboard-row">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span class="leaderboard-rank rank-2" style="font-size: 18px;">🥈</span> 
+                <strong style="color: var(--color-charcoal);">Khánh Ly</strong>
+              </div>
+              <span style="color: #6b7280; font-weight: 600;">1,120đ</span>
+            </div>
+            <div class="leaderboard-row">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span class="leaderboard-rank rank-3" style="font-size: 18px;">🥉</span> 
+                <strong style="color: var(--color-charcoal);">Anh Hùng</strong>
+              </div>
+              <span style="color: #6b7280; font-weight: 600;">980đ</span>
+            </div>
+            <div style="margin-top: 20px; font-size: 11px; color: #8c939a; text-align: center; line-height: 1.4; padding: 10px; background: var(--color-ivory); border: 1px dashed var(--color-silk-dark);">
+              Điểm thưởng tích lũy khi nộp bài tập đúng hạn và nhận được nhiều lượt thả tim "Tinh tế".
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    
+  </div>
+
+  <!-- JavaScript logic modules -->
+  <script src="js/community.js?v=1.4"></script>
+  <script>
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+      const toggle = document.querySelector('.mobile-menu-toggle');
+      const drawer = document.getElementById('mobile-drawer');
+      const overlay = document.getElementById('mobile-drawer-overlay');
+      if (toggle && drawer && overlay) {
+        toggle.classList.toggle('active');
+        drawer.classList.toggle('active');
+        overlay.classList.toggle('active');
+      }
+    }
+  </script>
+</body>
+</html>

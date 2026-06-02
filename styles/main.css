@@ -1,0 +1,423 @@
+/* ----------------------------------------------------
+   HỌC VIỆN THÊU TAY NGUYỄN THỊ HẰNG - MAIN CSS
+   ---------------------------------------------------- */
+:root {
+  /* Colors */
+  --color-ivory: #FCFAF6;
+  --color-silk-light: #F4EFE6;
+  --color-silk-dark: #EADEC9;
+  --color-charcoal: #12161A;
+  --color-charcoal-light: #1E2329;
+  --color-gold-light: #DFBA73;
+  --color-gold-dark: #B88E3D;
+  --color-emerald: #1F3F32;
+  --color-burgundy: #581C1C;
+  --color-success: #2E7D32;
+  --color-warning: #EF6C00;
+  --color-danger: #C62828;
+  
+  /* Fonts */
+  --font-display: 'Cormorant Garamond', serif;
+  --font-ui: 'Plus Jakarta Sans', sans-serif;
+  
+  /* Shadows & Radius */
+  --shadow-sm: 0 2px 8px rgba(18, 22, 26, 0.04);
+  --shadow-md: 0 4px 20px rgba(18, 22, 26, 0.08);
+  --shadow-lg: 0 10px 30px rgba(18, 22, 26, 0.12);
+  
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html {
+  scrollbar-gutter: stable;
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-ui);
+  background-color: var(--color-ivory);
+  color: var(--color-charcoal);
+  overflow-x: hidden;
+  line-height: 1.5;
+  padding-top: 80px; /* Nhường chỗ cho Header cố định */
+}
+
+/* Header / Navigation bar chung */
+.header-nav {
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 8%;
+  background: rgba(252, 250, 246, 0.95);
+  border-bottom: 1px solid var(--color-silk-light);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  backdrop-filter: blur(12px);
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--color-charcoal);
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+
+.logo span {
+  color: var(--color-gold-dark);
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--color-charcoal);
+  font-weight: 600;
+  font-size: 14px;
+  transition: var(--transition-smooth);
+}
+
+.nav-links a:hover,
+.nav-links li.active a {
+  color: var(--color-gold-dark);
+}
+
+/* Buttons */
+.btn-primary {
+  background: var(--color-charcoal);
+  color: var(--color-ivory);
+  border: 1px solid var(--color-gold-light);
+  padding: 12px 28px;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background: var(--color-gold-dark);
+  border-color: var(--color-gold-dark);
+  box-shadow: 0 0 12px rgba(223, 186, 115, 0.5);
+  color: var(--color-charcoal);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-charcoal);
+  border: 1px solid var(--color-gold-light);
+  padding: 12px 28px;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  background: var(--color-silk-light);
+}
+
+/* Section Title */
+.section-title-luxury {
+  font-family: var(--font-display);
+  font-size: 38px;
+  font-weight: 600;
+  color: var(--color-charcoal);
+  text-align: center;
+  position: relative;
+  margin-bottom: 48px;
+}
+
+.section-title-luxury::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: var(--color-gold-light);
+  margin: 12px auto 0 auto;
+}
+
+/* Modal Payment styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(18, 22, 26, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20000;
+  opacity: 0;
+  pointer-events: none;
+  transition: var(--transition-smooth);
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-box {
+  background: var(--color-ivory);
+  border: 1px solid var(--color-gold-light);
+  padding: 40px;
+  max-width: 480px;
+  width: 90%;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+  transform: scale(0.9);
+  transition: var(--transition-smooth);
+}
+
+.modal-overlay.active .modal-box {
+  transform: scale(1);
+}
+
+/* Sidebar layout chung cho portal */
+.portal-layout {
+  display: flex;
+  min-height: calc(100vh - 80px);
+}
+
+.portal-sidebar {
+  width: 260px;
+  background: var(--color-charcoal);
+  color: #90989f;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.portal-menu {
+  padding: 24px 16px;
+  list-style: none;
+}
+
+.portal-menu-item {
+  margin-bottom: 6px;
+}
+
+.portal-menu-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  color: #90989f;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: var(--transition-smooth);
+}
+
+.portal-menu-link:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.portal-menu-link.active {
+  background: var(--color-gold-light);
+  color: var(--color-charcoal);
+  font-weight: 600;
+}
+
+.portal-profile-bar {
+  padding: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-gold-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: var(--color-charcoal);
+  border: 2px solid var(--color-gold-light);
+}
+
+.portal-main {
+  flex: 1;
+  padding: 40px;
+  background: #FDFCF9;
+  overflow-y: auto;
+}
+
+/* ====================================================
+     MOBILE DRAWER MENU & TOGGLE
+     ==================================================== */
+/* Ẩn các thành phần di động trên màn hình Desktop */
+@media screen and (min-width: 769px) {
+  .mobile-drawer,
+  .mobile-drawer-overlay,
+  .mobile-menu-toggle {
+    display: none !important;
+  }
+}
+
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-menu-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-charcoal);
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.mobile-menu-toggle span::before,
+.mobile-menu-toggle span::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-charcoal);
+  left: 0;
+  transition: transform 0.3s ease;
+}
+
+.mobile-menu-toggle span::before {
+  top: -6px;
+}
+
+.mobile-menu-toggle span::after {
+  bottom: -6px;
+}
+
+.mobile-menu-toggle.active span {
+  background-color: transparent;
+}
+.mobile-menu-toggle.active span::before {
+  transform: translateY(6px) rotate(45deg);
+  background-color: var(--color-gold-light);
+}
+.mobile-menu-toggle.active span::after {
+  transform: translateY(-6px) rotate(-45deg);
+  background-color: var(--color-gold-light);
+}
+
+.mobile-drawer {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 300px;
+  height: 100vh;
+  background: var(--color-charcoal);
+  z-index: 999;
+  padding: 100px 30px 40px 30px;
+  box-shadow: var(--shadow-lg);
+  transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.mobile-drawer.active {
+  right: 0;
+}
+
+.mobile-drawer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mobile-drawer-links a {
+  text-decoration: none;
+  color: #90989f;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: var(--font-ui);
+  transition: var(--transition-smooth);
+  display: block;
+  padding: 8px 0;
+}
+
+.mobile-drawer-links li.active a,
+.mobile-drawer-links a:hover {
+  color: var(--color-gold-light);
+  padding-left: 8px;
+}
+
+.mobile-drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(18, 22, 26, 0.6);
+  z-index: 998;
+  opacity: 0;
+  pointer-events: none;
+  backdrop-filter: blur(4px);
+  transition: opacity 0.3s ease;
+}
+
+.mobile-drawer-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Hiệu ứng fade-in mượt mà cho các tab content */
+.student-subtab-content,
+.ad-main {
+  animation: tabFadeIn 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes tabFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

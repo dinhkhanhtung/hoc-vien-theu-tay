@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ứng dụng Di động (Giả lập) - Học viện Nguyễn Thị Hằng</title>
+  
+  <!-- Main CSS modules -->
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/responsive.css">
+</head>
+<body>
+
+  <!-- ====================================================
+       HEADER / NAVIGATION BAR
+       ==================================================== -->
+  <nav class="header-nav">
+    <a href="index.html" class="logo">Nghệ Nhân <span>Nguyễn Thị Hằng</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Trang chủ</a></li>
+      <li><a href="academy.html">Cổng học tập</a></li>
+      <li><a href="community.html">Cộng đồng</a></li>
+      <li><a href="admin.html">Quản trị SaaS</a></li>
+    </ul>
+    <div>
+      <a href="academy.html" class="btn-primary" style="padding: 8px 20px; font-size: 13px;">Vào Học viện</a>
+    </div>
+  </nav>
+
+  <!-- ====================================================
+       MOBILE APP SIMULATOR CONTAINER
+       ==================================================== -->
+  <div class="mobile-simulator-wrapper">
+    <div class="phone-container">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <!-- Phone Header -->
+        <div class="phone-header">
+          <span>Học Viện Thêu Tay Hằng Nguyễn</span>
+          <span style="color: var(--color-gold-dark);">★ 5.0</span>
+        </div>
+
+        <!-- Phone Body Content -->
+        <div class="phone-body" id="mobile-body-content">
+          <!-- Mobile Home Page -->
+          <div id="mobile-page-home">
+            <div style="background: linear-gradient(135deg, var(--color-charcoal) 0%, #1c2227 100%); color: white; padding: 20px; border-radius: 12px; margin-bottom: 20px; border: 1px solid var(--color-gold-light);">
+              <span style="font-size: 10px; color: var(--color-gold-light); text-transform: uppercase; letter-spacing: 1px;">Khóa học của tôi</span>
+              <h3 style="font-family: var(--font-display); font-size: 20px; margin-top: 4px;">Kỹ thuật thêu kim chìm sen</h3>
+              <p style="font-size: 12px; opacity: 0.8; margin-top: 8px;">Tiến trình hoàn thành: 68%.</p>
+              <button class="btn-primary" style="padding: 6px 14px; font-size: 11px; margin-top: 12px;" onclick="switchMobileSubPage('classroom')">Vào Học bài</button>
+            </div>
+
+            <h4 style="font-family: var(--font-display); font-size: 18px; margin-bottom: 12px;">Đặc quyền Học viên AI</h4>
+            <div style="display: flex; gap: 12px; margin-bottom: 24px;">
+              <div style="background: white; border:1px solid var(--color-silk-dark); padding: 12px; flex: 1; border-radius: 8px; text-align: center; cursor: pointer;" onclick="switchMobileSubPage('camera')">
+                <div style="font-size: 24px; margin-bottom: 6px;">📷</div>
+                <strong style="font-size: 11px; display: block;">Chụp quét AI</strong>
+              </div>
+              <div style="background: white; border:1px solid var(--color-silk-dark); padding: 12px; flex: 1; border-radius: 8px; text-align: center;" onclick="alert('Trợ lý học tập AI Coach sẵn sàng trả lời các câu hỏi kỹ thuật thêu 24/7.')">
+                <div style="font-size: 24px; margin-bottom: 6px;">💬</div>
+                <strong style="font-size: 11px; display: block;">AI Coach</strong>
+              </div>
+            </div>
+
+            <h4 style="font-family: var(--font-display); font-size: 18px; margin-bottom: 12px;">Học liệu & Dụng cụ khuyên dùng</h4>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
+              <div style="background: white; border:1px solid var(--color-silk-dark); padding: 8px;">
+                <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&width=150&auto=format&fit=crop" style="width: 100%; aspect-ratio:1; object-fit:cover; display:block; margin-bottom: 6px;" alt="Thread">
+                <strong style="font-size: 11px; display:block;">Hộp chỉ tơ 50 màu</strong>
+                <span style="font-size: 12px; color: var(--color-gold-dark); font-weight:700;">450.000đ</span>
+              </div>
+              <div style="background: white; border:1px solid var(--color-silk-dark); padding: 8px;">
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&width=150&auto=format&fit=crop" style="width: 100%; aspect-ratio:1; object-fit:cover; display:block; margin-bottom: 6px;" alt="Hoop">
+                <strong style="font-size: 11px; display:block;">Khung gỗ sồi tròn</strong>
+                <span style="font-size: 12px; color: var(--color-gold-dark); font-weight:700;">280.000đ</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mobile Classroom -->
+          <div id="mobile-page-classroom" style="display: none;">
+            <div style="background: #000; aspect-ratio: 16/9; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px;">
+              ▶ Phát video bài 3.2 (Màn hình dọc)
+            </div>
+            <h3 style="font-family: var(--font-display); font-size: 20px; margin-bottom: 8px;">Bài 3.2: Kỹ thuật thêu kim chìm cánh sen</h3>
+            <p style="font-size: 12px; line-height: 1.5; color: #525a61; margin-bottom: 16px;">Phương pháp đi kim đều chìm để tạo nét sâu cánh sen cổ điển Lý-Trần.</p>
+          </div>
+
+          <!-- Mobile AI Camera Scanner -->
+          <div id="mobile-page-camera" style="display: none;">
+            <div style="position: relative; width: 100%; aspect-ratio: 1; background: #222; border-radius: 12px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+              <div style="position: absolute; border: 2px dashed var(--color-gold-light); width: 80%; height: 80%; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index:5;">
+                <span style="color: white; font-size: 11px; text-transform: uppercase; background: rgba(0,0,0,0.6); padding: 4px 8px;">Định vị bài thêu vào vòng tròn</span>
+              </div>
+              <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&width=300&auto=format&fit=crop" style="width: 100%; height:100%; object-fit:cover; opacity: 0.6;" alt="Stitch target">
+              <div class="ai-scanner-overlay" id="mobile-scanner-bar" style="display: block;"></div>
+            </div>
+            <div style="margin-top: 16px; text-align: center;">
+              <button class="btn-primary" style="padding: 10px 24px; font-size: 13px;" onclick="simulateMobileAIScan()">Bấm chụp & Quét bài thêu</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phone Tab Bar -->
+        <div class="phone-tabbar">
+          <div class="phone-tab active" id="tab-mob-home" onclick="switchMobileSubPage('home')">
+            <span class="phone-tab-icon">🏠</span>
+            <span>Trang chủ</span>
+          </div>
+          <div class="phone-tab" id="tab-mob-classroom" onclick="switchMobileSubPage('classroom')">
+            <span class="phone-tab-icon">📚</span>
+            <span>Khóa học</span>
+          </div>
+          <div class="phone-tab" id="tab-mob-camera" onclick="switchMobileSubPage('camera')">
+            <span class="phone-tab-icon">📷</span>
+            <span>AI Stitch</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript logic modules -->
+  <script src="js/ai-analyzer.js"></script>
+  <script>
+    function switchMobileSubPage(pageName) {
+      document.querySelectorAll('.phone-tab').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      document.getElementById('tab-mob-' + (pageName === 'home' ? 'home' : pageName)).classList.add('active');
+
+      document.getElementById('mobile-page-home').style.display = 'none';
+      document.getElementById('mobile-page-classroom').style.display = 'none';
+      document.getElementById('mobile-page-camera').style.display = 'none';
+
+      document.getElementById('mobile-page-' + pageName).style.display = 'block';
+    }
+  </script>
+</body>
+</html>

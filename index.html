@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nghệ nhân Nguyễn Thị Hằng - Học viện Thêu tay Truyền thống Cao cấp</title>
+  
+  <!-- Main CSS modules -->
+  <link rel="stylesheet" href="styles/main.css?v=1.4">
+  <link rel="stylesheet" href="styles/landing.css?v=1.4">
+  <link rel="stylesheet" href="styles/responsive.css?v=1.4">
+</head>
+<body>
+
+  <!-- ====================================================
+       HEADER / NAVIGATION BAR
+       ==================================================== -->
+  <nav class="header-nav">
+    <a href="index.html" class="logo">Nghệ Nhân <span>Nguyễn Thị Hằng</span></a>
+    <ul class="nav-links">
+      <li class="active"><a href="index.html">Trang chủ</a></li>
+      <li><a href="academy.html">Cổng học tập</a></li>
+      <li><a href="community.html">Cộng đồng</a></li>
+      <li><a href="admin.html">Quản trị SaaS</a></li>
+    </ul>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <a href="academy.html" class="btn-primary nav-cta-desktop" style="padding: 8px 20px; font-size: 13px;">Vào Học viện</a>
+      <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle Menu">
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Navigation Drawer Overlay -->
+  <div class="mobile-drawer-overlay" id="mobile-drawer-overlay" onclick="toggleMobileMenu()"></div>
+  <div class="mobile-drawer" id="mobile-drawer">
+    <ul class="mobile-drawer-links">
+      <li class="active"><a href="index.html">Trang chủ</a></li>
+      <li><a href="academy.html">Cổng học tập</a></li>
+      <li><a href="community.html">Cộng đồng</a></li>
+      <li><a href="admin.html">Quản trị SaaS</a></li>
+    </ul>
+    <div style="border-top:1px solid rgba(255,255,255,0.05); padding-top:20px;">
+      <a href="academy.html" class="btn-primary" style="padding: 10px 20px; font-size: 14px; width:100%; justify-content:center; display:inline-flex;">Vào Học viện</a>
+    </div>
+  </div>
+
+  <!-- ====================================================
+       HERO SECTION
+       ==================================================== -->
+  <section class="lp-hero">
+    <div class="lp-hero-content">
+      <span class="lp-hero-tag">Nghệ thuật thủ công Việt Nam cao cấp</span>
+      <h1 class="lp-hero-title">Gìn giữ hồn cốt Việt qua từng mũi chỉ thêu tay</h1>
+      <p class="lp-hero-desc">Đồng hành cùng Nghệ nhân Nguyễn Thị Hằng trong hành trình làm chủ nghệ thuật thêu truyền thống. Từ những đường kim cơ bản đầu tiên đến việc tự tay hoàn thành các tác phẩm nghệ thuật đắt giá trên chất liệu lụa tơ tằm nguyên bản của làng nghề Hà Nội.</p>
+      <div class="lp-hero-buttons">
+        <a href="academy.html" class="btn-primary">Bắt đầu học ngay</a>
+        <a href="#featured-courses" class="btn-secondary">Tìm hiểu khóa học</a>
+      </div>
+    </div>
+    <div class="lp-hero-image-container">
+      <div class="lp-hero-image-frame">
+        <img src="https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?q=80&width=600&auto=format&fit=crop" alt="Nghệ nhân Nguyễn Thị Hằng" class="lp-hero-image">
+      </div>
+      <div class="lp-hero-badge">
+        <div class="lp-hero-badge-title">Nguyễn Thị Hằng</div>
+        <div class="lp-hero-badge-desc">Di sản thêu tay Hà Nội cổ kính</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       STORY SECTION
+       ==================================================== -->
+  <section class="lp-story">
+    <div class="lp-story-image">
+      <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&width=500&auto=format&fit=crop" alt="Chỉ thêu tơ tằm Nguyễn Thị Hằng" style="width: 100%; display: block;">
+    </div>
+    <div class="lp-story-content">
+      <span class="lp-hero-tag">Hành trình gìn giữ nghề</span>
+      <div class="lp-story-quote">"Mỗi bức thêu không chỉ được vẽ bằng chỉ màu, nó được dệt bằng tâm hồn, sự kiên nhẫn và ngàn năm văn hóa Việt."</div>
+      <p class="lp-story-text">Sinh ra tại vùng đất Hà Nội giàu truyền thống mỹ nghệ, Nghệ nhân Nguyễn Thị Hằng đã dành trọn cả cuộc đời để gìn giữ những kỹ năng thêu tay cổ truyền quý báu. Với mong muốn số hóa và truyền bá nghệ thuật này tới thế hệ trẻ trong và ngoài nước, Học viện Thêu tay trực tuyến Nguyễn Thị Hằng được thành lập.</p>
+      <p class="lp-story-text">Đây không chỉ là các bài học video, đó là một lộ trình truyền nghề hoàn chỉnh, kết hợp sự đánh giá chuẩn xác của công nghệ AI và sự đồng hành chấm bài từ người thầy nghệ nhân.</p>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       FEATURED COURSES
+       ==================================================== -->
+  <section class="lp-courses" id="featured-courses">
+    <h2 class="section-title-luxury">Khóa Học Nghệ Thuật Nổi Bật</h2>
+    <div class="lp-courses-grid">
+      <div class="course-card">
+        <div class="course-card-img-wrapper">
+          <span class="course-card-level">Nhập môn</span>
+          <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&width=400&auto=format&fit=crop" class="course-card-img" alt="Embroidery basic">
+        </div>
+        <div class="course-card-body">
+          <h3 class="course-card-title">Kỹ thuật Thêu Mũi Cơ Bản & Hoa Văn Nhỏ</h3>
+          <div class="course-card-meta">
+            <span>12 Bài giảng</span>
+            <span>★ 4.9 (128 review)</span>
+          </div>
+          <div class="course-card-footer">
+            <span class="course-card-price">1.200.000đ</span>
+            <a href="academy.html" class="btn-primary course-card-btn">Đăng ký</a>
+          </div>
+        </div>
+      </div>
+      <div class="course-card">
+        <div class="course-card-img-wrapper">
+          <span class="course-card-level">Trung cấp</span>
+          <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&width=400&auto=format&fit=crop" class="course-card-img" alt="Embroidery flowers">
+        </div>
+        <div class="course-card-body">
+          <h3 class="course-card-title">Thêu Hoa Sen Cổ Điển Trên Lụa Tơ Tằm</h3>
+          <div class="course-card-meta">
+            <span>24 Bài giảng</span>
+            <span>★ 5.0 (86 review)</span>
+          </div>
+          <div class="course-card-footer">
+            <span class="course-card-price">2.400.000đ</span>
+            <a href="academy.html" class="btn-primary course-card-btn">Đăng ký</a>
+          </div>
+        </div>
+      </div>
+      <div class="course-card">
+        <div class="course-card-img-wrapper">
+          <span class="course-card-level">Nghệ nhân</span>
+          <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&width=400&auto=format&fit=crop" class="course-card-img" alt="Embroidery art">
+        </div>
+        <div class="course-card-body">
+          <h3 class="course-card-title">Thiết Kế & Thêu Tranh Phong Cảnh Thượng Hạng</h3>
+          <div class="course-card-meta">
+            <span>45 Bài giảng</span>
+            <span>★ 5.0 (42 review)</span>
+          </div>
+          <div class="course-card-footer">
+            <span class="course-card-price">4.500.000đ</span>
+            <a href="academy.html" class="btn-primary course-card-btn">Đăng ký</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       STUDENT SUCCESS (SLIDER)
+       ==================================================== -->
+  <section class="lp-success">
+    <h2 class="section-title-luxury">Sự Tiến Bộ Của Học Viên</h2>
+    <div class="slider-container">
+      <div class="slider-view">
+        <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&width=800&auto=format&fit=crop" class="slider-img" alt="Thành phẩm hoàn chỉnh">
+        <div class="slider-overlay" id="success-slider-overlay">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&width=800&auto=format&fit=crop" alt="Bài thêu thô ban đầu">
+        </div>
+        <div class="slider-handle" id="success-slider-handle" onmousedown="startSlideDrag(event)">↔</div>
+        <div class="slider-label before">Bài Thô Mới Tập</div>
+        <div class="slider-label after">Tác Phẩm Sau 4 Tuần</div>
+      </div>
+      <div class="slider-caption">Kéo thanh trượt để so sánh bài thực hành của học viên Minh Thư - Đạt AI Rating 94/100</div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       CỬA HÀNG HỌC LIỆU
+       ==================================================== -->
+  <section class="lp-courses" style="background:var(--color-silk-light);" id="handmade-shop">
+    <h2 class="section-title-luxury">Cửa Hàng Học Liệu & Dụng Cụ</h2>
+    <div class="shop-grid">
+      <div class="shop-card">
+        <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&width=200&auto=format&fit=crop" class="shop-card-img" alt="Silk thread">
+        <div>
+          <h4 class="shop-card-title">Hộp Chỉ Thêu Tơ Tằm 50 Màu Đặc Biệt</h4>
+          <div class="shop-card-price">450.000đ</div>
+        </div>
+        <button class="btn-primary" style="width:100%; font-size:12px; padding:8px;" onclick="addToCart('Hộp Chỉ Thêu Tơ Tằm 50 Màu', 450000)">Thêm vào giỏ</button>
+      </div>
+      <div class="shop-card">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&width=200&auto=format&fit=crop" class="shop-card-img" alt="Hoop">
+        <div>
+          <h4 class="shop-card-title">Khung Thêu Tròn Gỗ Sồi Nhập Khẩu 25cm</h4>
+          <div class="shop-card-price">280.000đ</div>
+        </div>
+        <button class="btn-primary" style="width:100%; font-size:12px; padding:8px;" onclick="addToCart('Khung Thêu Tròn Gỗ Sồi 25cm', 280000)">Thêm vào giỏ</button>
+      </div>
+      <div class="shop-card">
+        <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&width=200&auto=format&fit=crop" class="shop-card-img" alt="Kit sen">
+        <div>
+          <h4 class="shop-card-title">Bộ Kit Thêu Sen Đầy Đủ (Gồm Vải Lụa & Chỉ)</h4>
+          <div class="shop-card-price">620.000đ</div>
+        </div>
+        <button class="btn-primary" style="width:100%; font-size:12px; padding:8px;" onclick="addToCart('Bộ Kit Thêu Sen Đầy Đủ', 620000)">Thêm vào giỏ</button>
+      </div>
+    </div>
+
+    <!-- Giỏ hàng động -->
+    <div class="cart-container">
+      <h3 style="font-family:var(--font-display); font-size:22px; margin-bottom:16px; border-bottom:1px solid var(--color-silk-dark); padding-bottom:8px;">Giỏ hàng của bạn</h3>
+      <div id="cart-items-list">
+        <p style="color:#6b7280; font-size:13px;">Giỏ hàng trống.</p>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:20px; font-weight:700; font-size:16px;">
+        <span>Tổng số tiền:</span>
+        <span id="cart-total-amount" style="color:var(--color-gold-dark);">0đ</span>
+      </div>
+      <button class="btn-primary" style="margin-top:20px; width:100%;" onclick="checkoutCart()">Thanh toán bằng VietQR</button>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       FAQ SECTION
+       ==================================================== -->
+  <section class="lp-faq">
+    <h2 class="section-title-luxury">Những Câu Hỏi Thường Gặp</h2>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">Học thêu trực tuyến thì làm thế nào để sửa các lỗi kim chỉ nhỏ?</div>
+      <div class="faq-answer">Hệ thống tích hợp AI Stitch Reviewer. Học viên chỉ cần chụp ảnh bài thêu gửi lên, hệ thống sẽ tự quét và phát hiện các mũi thêu bị lỗi khoảng cách, lỏng chỉ để gợi ý khắc phục ngay lập tức, kết hợp sửa bài trực tiếp từ Nghệ nhân Nguyễn Thị Hằng.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">Tôi có được tặng kèm nguyên liệu và khung thêu không?</div>
+      <div class="faq-answer">Có. Tất cả các gói khóa học chính thức đều được tặng kèm 1 Hộp Dụng Cụ Thực Hành gồm khung thêu gỗ sồi, vải lụa tơ tằm dệt tay và chỉ thêu đã được phân chia mã màu phù hợp với lộ trình học của bạn.</div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       FOOTER
+       ==================================================== -->
+  <footer class="lp-footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-logo">Nghệ Nhân <span>Nguyễn Thị Hằng</span></div>
+        <p>Nơi kết nối và lưu giữ nghệ thuật thêu truyền thống thủ công cao cấp Việt Nam dưới sự hỗ trợ của công nghệ số hóa hiện đại.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Hệ thống</h4>
+        <ul>
+          <li><a href="academy.html">Cổng học viên</a></li>
+          <li><a href="admin.html">Trang quản trị</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Liên kết nhanh</h4>
+        <ul>
+          <li><a href="#handmade-shop">Cửa hàng dụng cụ</a></li>
+          <li><a href="community.html">Diễn đàn cộng đồng</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Liên hệ học viện</h4>
+        <p>Địa chỉ: Hoành 2, xã Phúc Sơn, TP. Hà Nội</p>
+        <p>Hotline/Zalo: <strong>0868265665</strong></p>
+        <p>Email: hotro@nguyenthihang.vn</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Học viện Thêu tay Nghệ thuật Nguyễn Thị Hằng. All rights reserved.</p>
+      <p>Premium SaaS & Craftsmanship</p>
+    </div>
+  </footer>
+
+  <!-- ====================================================
+       MODAL THANH TOÁN (VietQR)
+       ==================================================== -->
+  <div class="modal-overlay" id="payment-modal">
+    <div class="modal-box">
+      <h3 style="font-family:var(--font-display); font-size:24px; margin-bottom:12px; color:var(--color-charcoal);">CỔNG THANH TOÁN TỰ ĐỘNG</h3>
+      <p style="font-size:13px; color:#6b7280; margin-bottom:20px;">Quét mã VietQR dưới đây để thanh toán tự động qua App ngân hàng.</p>
+      <div style="background:white; padding:16px; display:inline-block; border:1px solid var(--color-silk-dark); margin-bottom:16px;">
+        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><rect width='160' height='160' fill='white'/><rect x='10' y='10' width='140' height='140' fill='none' stroke='black' stroke-width='4'/><rect x='30' y='30' width='30' height='30' fill='black'/><rect x='100' y='30' width='30' height='30' fill='black'/><rect x='30' y='100' width='30' height='30' fill='black'/><rect x='80' y='80' width='40' height='40' fill='black'/></svg>" alt="VietQR" style="width: 150px; height: 150px;">
+      </div>
+      <div style="font-weight:700; font-size:18px; margin-bottom:24px; color:var(--color-gold-dark);" id="modal-payment-amount">0đ</div>
+      <div style="display:flex; gap:12px; justify-content:center;">
+        <button class="btn-primary" style="padding:10px 20px; font-size:13px;" onclick="closePaymentModal(true)">Xác nhận chuyển khoản thành công</button>
+        <button class="btn-secondary" style="padding:10px 20px; font-size:13px;" onclick="closePaymentModal(false)">Hủy bỏ</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript logic modules -->
+  <script src="js/cart.js?v=1.4"></script>
+  <script>
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+      const toggle = document.querySelector('.mobile-menu-toggle');
+      const drawer = document.getElementById('mobile-drawer');
+      const overlay = document.getElementById('mobile-drawer-overlay');
+      if (toggle && drawer && overlay) {
+        toggle.classList.toggle('active');
+        drawer.classList.toggle('active');
+        overlay.classList.toggle('active');
+      }
+    }
+
+    // FAQ toggler
+    function toggleFaq(element) {
+      element.classList.toggle('active');
+    }
+
+    // Before-After Success Slider Drag
+    function startSlideDrag(e) {
+      e.preventDefault();
+      document.onmousemove = function(event) {
+        let container = document.querySelector('.slider-view');
+        let rect = container.getBoundingClientRect();
+        let x = event.clientX - rect.left;
+        if (x < 0) x = 0;
+        if (x > rect.width) x = rect.width;
+        
+        let percentage = (x / rect.width) * 100;
+        document.getElementById('success-slider-overlay').style.width = percentage + '%';
+        document.getElementById('success-slider-handle').style.left = percentage + '%';
+      };
+      document.onmouseup = function() {
+        document.onmousemove = null;
+        document.onmouseup = null;
+      };
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cổng Học Viên - Học viện Thêu tay Nghệ thuật Nguyễn Thị Hằng</title>
+  
+  <!-- Main CSS modules -->
+  <link rel="stylesheet" href="styles/main.css?v=1.4">
+  <link rel="stylesheet" href="styles/academy.css?v=1.4">
+  <link rel="stylesheet" href="styles/responsive.css?v=1.4">
+</head>
+<body>
+
+  <!-- ====================================================
+       HEADER / NAVIGATION BAR
+       ==================================================== -->
+  <nav class="header-nav">
+    <a href="index.html" class="logo">Nghệ Nhân <span>Nguyễn Thị Hằng</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Trang chủ</a></li>
+      <li class="active"><a href="academy.html">Cổng học tập</a></li>
+      <li><a href="community.html">Cộng đồng</a></li>
+      <li><a href="admin.html">Quản trị SaaS</a></li>
+    </ul>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <a href="index.html#handmade-shop" class="btn-secondary nav-cta-desktop" style="padding: 8px 20px; font-size: 13px;">Dụng cụ thêu</a>
+      <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle Menu">
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Navigation Drawer Overlay -->
+  <div class="mobile-drawer-overlay" id="mobile-drawer-overlay" onclick="toggleMobileMenu()"></div>
+  <div class="mobile-drawer" id="mobile-drawer">
+    <ul class="mobile-drawer-links">
+      <li><a href="index.html">Trang chủ</a></li>
+      <li class="active"><a href="academy.html">Cổng học tập</a></li>
+      <li><a href="academy.html#community" onclick="toggleMobileMenu(); switchStudentTab('community')">Cộng đồng</a></li>
+      <li><a href="admin.html">Quản trị SaaS</a></li>
+    </ul>
+    <div style="border-top:1px solid rgba(255,255,255,0.05); padding-top:20px;">
+      <a href="index.html#handmade-shop" class="btn-secondary" style="padding: 10px 20px; font-size: 14px; width:100%; justify-content:center; display:inline-flex; border: 1px solid var(--color-gold-light); color: white;">Dụng cụ thêu</a>
+    </div>
+  </div>
+
+  <!-- ====================================================
+       PORTAL LAYOUT (Sidebar + Main Content)
+       ==================================================== -->
+  <div class="portal-layout">
+    
+    <!-- Portal Sidebar -->
+    <aside class="portal-sidebar">
+      <div>
+        <div class="portal-sidebar-title" style="padding: 24px 20px; font-family: var(--font-display); font-size: 22px; font-weight: 700; color: white; border-bottom: 1px solid rgba(255,255,255,0.05);">
+          Học viện Portal
+        </div>
+        <ul class="portal-menu">
+          <li class="portal-menu-item">
+            <a href="#" class="portal-menu-link active" onclick="switchStudentTab('overview')">
+              <span>📊</span> Tổng quan học tập
+            </a>
+          </li>
+          <li class="portal-menu-item">
+            <a href="#" class="portal-menu-link" onclick="switchStudentTab('classroom')">
+              <span>🎬</span> Lớp học của tôi
+            </a>
+          </li>
+          <li class="portal-menu-item">
+            <a href="#" class="portal-menu-link" onclick="switchStudentTab('ai')">
+              <span>🤖</span> AI Stitch Review
+            </a>
+          </li>
+          <li class="portal-menu-item">
+            <a href="#" class="portal-menu-link" onclick="switchStudentTab('community')">
+              <span>👥</span> Cộng đồng học viên
+            </a>
+          </li>
+          <li class="portal-menu-item">
+            <a href="#" class="portal-menu-link" onclick="switchStudentTab('resources')">
+              <span>📂</span> Thư viện tài nguyên
+            </a>
+          </li>
+          <li class="portal-menu-item">
+            <a href="#" class="portal-menu-link" onclick="switchStudentTab('affiliate')">
+              <span>🤝</span> Tiếp thị liên kết
+            </a>
+          </li>
+          <li class="portal-menu-item">
+            <a href="#" class="portal-menu-link" onclick="switchStudentTab('cert')">
+              <span>📜</span> Thi & Chứng chỉ
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="portal-profile-bar">
+        <div class="avatar">MT</div>
+        <div class="sa-profile-info">
+          <div class="sa-profile-name" style="color:white; font-weight:600;">Nguyễn Minh Thư</div>
+          <div class="sa-profile-role" style="color:var(--color-gold-light); font-size:11px;">Học viên xuất sắc</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Portal Main Study Area -->
+    <main class="portal-main">
+
+      <!-- 1. OVERVIEW TAB -->
+      <div id="student-tab-overview" class="student-subtab-content">
+        <div class="sa-header">
+          <div class="sa-title-welcome">
+            <h2>Xin chào, Minh Thư</h2>
+            <p>Tiếp tục lộ trình thêu hoa sen tơ tằm cùng Nghệ nhân Nguyễn Thị Hằng hôm nay nào!</p>
+          </div>
+          <button class="btn-primary" onclick="switchStudentTab('classroom')">Vào học ngay</button>
+        </div>
+
+        <div class="sa-progress-hero">
+          <div class="sa-progress-text">
+            <h3>Khóa học hiện tại: Kỹ thuật Thêu Sen Cổ Điển</h3>
+            <p style="margin-top: 4px; opacity: 0.9;">Chương 3: Đi nét chỉ vàng & Phủ nhụy hoa</p>
+          </div>
+          <div class="sa-progress-bar-wrapper">
+            <div class="sa-progress-bar-labels">
+              <span>Tiến độ hoàn thành</span>
+              <span>68%</span>
+            </div>
+            <div class="sa-progress-bar-bg">
+              <div class="sa-progress-bar-fill"></div>
+            </div>
+          </div>
+        </div>
+
+        <h3 style="font-family: var(--font-display); font-size: 24px; margin-bottom: 20px;">Lộ trình học tập tiếp theo</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+          <div style="background: white; border: 1px solid var(--color-silk-dark); padding: 24px; border-radius: 8px;">
+            <h4 style="font-size: 16px; margin-bottom: 8px;">Bài học kế tiếp: Thêu phủ cánh hoa mờ</h4>
+            <p style="color: #6c757d; font-size: 13px; margin-bottom: 16px;">Phối hợp chỉ tơ mảnh số 9 để tạo hiệu ứng mờ cho lớp cánh hoa bên trong.</p>
+            <button class="btn-secondary" style="padding: 6px 16px; font-size: 12px;" onclick="switchStudentTab('classroom')">Học bài tiếp theo</button>
+          </div>
+          <div style="background: white; border: 1px solid var(--color-silk-dark); padding: 24px; border-radius: 8px; border-left: 4px solid var(--color-gold-dark);">
+            <h4 style="font-size: 16px; margin-bottom: 8px;">Kiểm tra độ đều mũi thêu bằng AI</h4>
+            <p style="color: #6c757d; font-size: 13px; margin-bottom: 16px;">Tải ảnh tác phẩm thực hành của bạn lên để hệ thống AI đánh giá độ đều mũi chỉ.</p>
+            <button class="btn-primary" style="padding: 6px 16px; font-size: 12px;" onclick="switchStudentTab('ai')">Chạy quét AI</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. CLASSROOM TAB -->
+      <div id="student-tab-classroom" class="student-subtab-content" style="display: none;">
+        <div class="sa-header">
+          <h2>Lớp Học Thêu Trực Tuyến</h2>
+        </div>
+        <div class="sa-course-player">
+          <div>
+            <div class="player-video-box">
+              <div class="video-dummy-play" onclick="playLessonVideo()">
+                <div class="video-dummy-play-btn">▶</div>
+                <div>Ấn để phát Video: Bài 3.2 - Kỹ thuật thêu kim chìm cánh sen</div>
+              </div>
+              <div class="ai-scanner-overlay" id="video-scanner"></div>
+            </div>
+            <div class="sa-tabs-nav">
+              <div class="sa-tab-link active">Mô tả bài giảng</div>
+              <div class="sa-tab-link" onclick="switchStudentTab('resources')">Pattern Tải về</div>
+              <div class="sa-tab-link">AI Coach & Ghi chú</div>
+            </div>
+            <div class="sa-tab-content">
+              <p style="font-size: 14px; line-height: 1.6; color: #4a5056;">Trong bài học này, Nghệ nhân Nguyễn Thị Hằng hướng dẫn phương pháp đưa kim xiên 45 độ ẩn dưới nếp lụa tơ tằm để tạo hiệu ứng bóng đổ chuyển sắc tự nhiên. Bài thực hành yêu cầu thêu đều lực tay.</p>
+            </div>
+          </div>
+
+          <!-- Lessons List -->
+          <div class="player-sidebar-lessons">
+            <div class="player-sidebar-title">Mục lục chương</div>
+            <div class="chapter-title">Chương 1: Dụng cụ & Nguyên liệu</div>
+            <div class="lesson-item">
+              <div class="lesson-item-left">
+                <div class="lesson-status-dot complete"></div>
+                <span>Bài 1.1: Chuẩn bị khung cửi vải lụa</span>
+              </div>
+            </div>
+            <div class="lesson-item">
+              <div class="lesson-item-left">
+                <div class="lesson-status-dot complete"></div>
+                <span>Bài 1.2: Cách chẻ tơ và chọn kim</span>
+              </div>
+            </div>
+            <div class="chapter-title">Chương 2: Mũi thêu Sen Cổ Điển</div>
+            <div class="lesson-item active">
+              <div class="lesson-item-left">
+                <div class="lesson-status-dot" style="background: var(--color-gold-light);"></div>
+                <span>Bài 3.2: Kỹ thuật thêu kim chìm sen</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. AI STITCH REVIEWER TAB -->
+      <div id="student-tab-ai" class="student-subtab-content" style="display: none;">
+        <div class="sa-header">
+          <h2>Hệ thống Trí Tuệ Nhân Tạo AI Stitch</h2>
+        </div>
+        <div class="ai-analyzer-container">
+          <div class="ai-flex">
+            <div class="ai-upload-box" onclick="simulateAIScan()">
+              <div class="ai-scanner-overlay" id="ai-scanner-light"></div>
+              <div id="ai-upload-prompt" style="text-align: center; padding: 20px;">
+                <div class="ai-upload-icon">📷</div>
+                <strong style="font-size: 14px;">Nhấp vào đây để tải lên tác phẩm giả lập</strong>
+                <p style="font-size: 11px; color: #8c939a; margin-top: 6px;">Hệ thống AI sẽ tự quét từng thớ chỉ thêu để tìm lỗi.</p>
+              </div>
+              <img id="ai-target-img" src="https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&width=500&auto=format&fit=crop" class="ai-analysis-image" alt="User work">
+              
+              <!-- AI Diagnostics -->
+              <div class="ai-marker error" id="marker-err-1" style="top: 42%; left: 35%;" onclick="alert('AI phát hiện: Mũi chỉ thêu bị chéo lệch góc so với chuẩn 45 độ.')"></div>
+              <div class="ai-marker error" id="marker-err-2" style="top: 58%; left: 54%;" onclick="alert('AI phát hiện: Lực căng chỉ không đều gây nhăn nheo bề mặt lụa.')"></div>
+              <div class="ai-marker good" id="marker-good-1" style="top: 32%; left: 68%;" onclick="alert('AI đánh giá: Điểm phân bố màu và độ chuyển sắc loang lụa xuất sắc!')"></div>
+            </div>
+
+            <div class="ai-results-pane">
+              <div>
+                <h4 style="font-size: 15px; margin-bottom: 16px; border-bottom: 1px solid var(--color-silk-dark); padding-bottom: 8px;">Thông số chẩn đoán AI</h4>
+                <div class="ai-score-row">
+                  <span>Độ đều mũi chỉ (Stitch Density)</span>
+                  <span class="ai-score-val" id="score-density">--</span>
+                </div>
+                <div class="ai-score-row">
+                  <span>Hài hòa màu sắc (Color Harmony)</span>
+                  <span class="ai-score-val" id="score-harmony">--</span>
+                </div>
+                <div class="ai-score-row">
+                  <span>Bố cục tổng quan (Composition)</span>
+                  <span class="ai-score-val" id="score-composition">--</span>
+                </div>
+                <div class="ai-score-row" style="border-bottom: 2px solid var(--color-gold-light); font-weight: 700;">
+                  <span>ĐIỂM ĐÁNH GIÁ CHUNG (AI)</span>
+                  <span class="ai-score-val" style="font-size: 20px;" id="score-overall">--</span>
+                </div>
+              </div>
+              <div class="ai-coach-advice" id="ai-advice-text">
+                Chưa có dữ liệu phân tích. Hãy nhấp chuột vào khung tải ảnh bên trái để chạy quy trình mô phỏng chấm bài thêu bằng AI.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. RESOURCES TAB -->
+      <div id="student-tab-resources" class="student-subtab-content" style="display: none;">
+        <div class="sa-header">
+          <h2>Thư Viện Tài Nguyên & Pattern Vẽ</h2>
+        </div>
+        <div style="display:flex; gap:16px; margin-bottom:24px;">
+          <input type="text" placeholder="Tìm kiếm tài liệu..." style="flex:1; padding:10px 16px; border:1px solid var(--color-silk-dark); font-family:var(--font-ui);" id="res-search-input" onkeyup="filterResources()">
+          <select style="padding:10px 16px; border:1px solid var(--color-silk-dark); font-family:var(--font-ui);" id="res-filter-select" onchange="filterResources()">
+            <option value="all">Tất cả</option>
+            <option value="pattern">Pattern thêu</option>
+            <option value="guide">Tài liệu kỹ thuật</option>
+          </select>
+        </div>
+        <div class="resource-grid" id="resource-grid-container">
+          <div class="resource-card" data-type="pattern">
+            <div>
+              <span class="course-card-level" style="position:static; margin-bottom:12px; display:inline-block;">Pattern</span>
+              <h4 style="font-family:var(--font-display); font-size:20px; margin-bottom:8px;">Bản vẽ hoa văn sen Lý-Trần</h4>
+              <p style="color:#6b7280; font-size:12px; margin-bottom:16px;">Tệp PDF vẽ vector sắc nét để in mẫu thêu.</p>
+            </div>
+            <button class="btn-primary" style="padding:8px 16px; font-size:12px;" onclick="alert('Đang tải tệp: Ban-Ve-Sen-Co-Ly-Tran.pdf')">Tải xuống</button>
+          </div>
+          <div class="resource-card" data-type="guide">
+            <div>
+              <span class="course-card-level" style="position:static; margin-bottom:12px; display:inline-block; background:var(--color-emerald);">Tài liệu</span>
+              <h4 style="font-family:var(--font-display); font-size:20px; margin-bottom:8px;">Sổ tay kỹ thuật loang chỉ tơ</h4>
+              <p style="color:#6b7280; font-size:12px; margin-bottom:16px;">Hướng dẫn cách loang màu tơ tằm tự nhiên mượt mà.</p>
+            </div>
+            <button class="btn-primary" style="padding:8px 16px; font-size:12px;" onclick="alert('Đang tải tệp: Huong-Dan-Loang-Mau-Chi-To.pdf')">Tải xuống</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. AFFILIATE TAB -->
+      <div id="student-tab-affiliate" class="student-subtab-content" style="display: none;">
+        <div class="sa-header">
+          <h2>Chương trình Tiếp Thị Liên Kết (Affiliate)</h2>
+        </div>
+        <div class="aff-grid-3">
+          <div class="aff-card">
+            <div style="font-size:12px; color:#6b7280; font-weight:600; text-transform:uppercase; margin-bottom:6px;">Lượt click vào link</div>
+            <div style="font-size:32px; font-weight:700;">1,280 lượt</div>
+          </div>
+          <div class="aff-card">
+            <div style="font-size:12px; color:#6b7280; font-weight:600; text-transform:uppercase; margin-bottom:6px;">Đơn hàng thành công</div>
+            <div style="font-size:32px; font-weight:700; color:var(--color-emerald);">42 đơn</div>
+          </div>
+          <div class="aff-card">
+            <div style="font-size:12px; color:#6b7280; font-weight:600; text-transform:uppercase; margin-bottom:6px;">Hoa hồng tích lũy</div>
+            <div style="font-size:32px; font-weight:700; color:var(--color-gold-dark);">7.850.000đ</div>
+          </div>
+        </div>
+        <div style="background:white; border:1px solid var(--color-silk-dark); padding:24px;">
+          <h3 style="font-family:var(--font-display); font-size:20px; margin-bottom:12px;">Link giới thiệu của bạn</h3>
+          <div style="display:flex; gap:12px;">
+            <input type="text" value="https://nguyenthihang.vn/ref/nguyenminhthu889" readonly style="flex:1; padding:10px 16px; border:1px solid var(--color-silk-dark); font-family:var(--font-ui); background:#f9fafb; font-size:13px;">
+            <button class="btn-primary" style="padding:10px 20px; font-size:13px;" onclick="alert('Đã sao chép link!')">Sao chép</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. CERTIFICATES TAB -->
+      <div id="student-tab-cert" class="student-subtab-content" style="display: none;">
+        <div class="sa-header">
+          <h2>Nhận Chứng Chỉ Tốt Nghiệp</h2>
+        </div>
+        <div style="background: white; border: 1px solid var(--color-silk-dark); padding: 40px; text-align: center; max-width: 700px; margin: 0 auto; box-shadow: var(--shadow-md);">
+          <div style="border: 2px solid var(--color-gold-light); padding: 30px; background: var(--color-ivory); position: relative;">
+            <div style="position: absolute; top: 10px; left: 10px; font-size: 20px; color: var(--color-gold-dark);">❖</div>
+            <div style="position: absolute; top: 10px; right: 10px; font-size: 20px; color: var(--color-gold-dark);">❖</div>
+            <div style="position: absolute; bottom: 10px; left: 10px; font-size: 20px; color: var(--color-gold-dark);">❖</div>
+            <div style="position: absolute; bottom: 10px; right: 10px; font-size: 20px; color: var(--color-gold-dark);">❖</div>
+            
+            <h3 style="font-family: var(--font-display); font-size: 32px; color: var(--color-charcoal); margin-bottom: 8px;">CHỨNG NHẬN HOÀN THÀNH</h3>
+            <p style="font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--color-gold-dark); margin-bottom: 24px;">HỌC VIỆN THÊU TAY TRUYỀN THỐNG VIỆT NAM</p>
+            <p style="font-size: 13px; font-style: italic; color: #6b7280; margin-bottom: 12px;">Chứng nhận học viên</p>
+            <h4 style="font-family: var(--font-display); font-size: 28px; color: var(--color-charcoal); margin-bottom: 16px;">Nguyễn Minh Thư</h4>
+            <p style="font-size: 14px; line-height: 1.6; max-width: 480px; margin: 0 auto 24px auto;">Đã hoàn thành xuất sắc khóa học chuyên sâu <strong>Kỹ thuật Thêu Sen Cổ Điển Trên Lụa Tơ Tằm</strong> và đạt điểm đánh giá tác phẩm tốt nghiệp xuất sắc từ Nghệ nhân Nguyễn Thị Hằng.</p>
+            
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 40px; padding: 0 40px;">
+              <div style="text-align: center;">
+                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80'><rect width='80' height='80' fill='white'/><rect x='10' y='10' width='60' height='60' fill='none' stroke='black' stroke-width='2'/><rect x='20' y='20' width='40' height='40' fill='black'/></svg>" alt="QR" style="width: 70px; height: 70px;">
+                <p style="font-size: 10px; color: #929ba2; margin-top: 4px;">Mã số: VN-EMB-889</p>
+              </div>
+              <div style="text-align: center;">
+                <p style="font-family: var(--font-display); font-size: 20px; font-style: italic; color: var(--color-gold-dark);">Nguyễn Thị Hằng</p>
+                <div style="width: 120px; height: 1px; background: var(--color-silk-dark); margin: 8px auto;"></div>
+                <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">Chữ ký Nghệ nhân</p>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top: 30px;">
+            <button class="btn-primary" onclick="alert('Đang tải chứng chỉ PDF...')">Tải xuống chứng chỉ</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. COMMUNITY TAB (Tích hợp mượt mà không reload trang) -->
+      <div id="student-tab-community" class="student-subtab-content" style="display: none;">
+        <div class="sa-header">
+          <div class="sa-title-welcome">
+            <h2>Diễn Đàn Thảo Luận Mỹ Nghệ</h2>
+            <p>Nơi chia sẻ các tác phẩm thêu tơ lụa thủ công và nhận góp ý từ cộng đồng học viên cô Hằng.</p>
+          </div>
+        </div>
+
+        <div class="com-layout">
+          <!-- Main Feed (Cột Trái) -->
+          <div>
+            <!-- Post Creation Box -->
+            <div class="com-post-box">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                <span style="font-size: 13px; font-weight: 600; color: var(--color-charcoal);">Chủ đề bài đăng:</span>
+                <select id="post-tag-select" style="padding: 6px 12px; font-size: 12px; border: 1px solid var(--color-silk-dark); font-family: var(--font-ui); background: white; cursor: pointer; font-weight: 600;">
+                  <option value="#TácPhẩmMới">🌸 Tác phẩm mới</option>
+                  <option value="#HỏiĐápKỹThuật">❓ Hỏi đáp kỹ thuật</option>
+                  <option value="#GópÝNghệNhân">✨ Góp ý nghệ nhân</option>
+                </select>
+              </div>
+              <textarea class="com-textarea" id="post-text-input" placeholder="Chia sẻ hình ảnh tác phẩm thêu mới hoàn thiện hoặc đặt câu hỏi cho lớp học thêu..."></textarea>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <button class="btn-secondary" style="padding: 8px 16px; font-size: 12px; border-radius: 4px;" onclick="addPostPhoto()">🖼 Đính kèm ảnh thêu mẫu</button>
+                <button class="btn-primary" style="padding: 8px 24px; font-size: 12px; border-radius: 4px;" onclick="submitCommunityPost()">Đăng bài viết</button>
+              </div>
+              <div id="attached-photo-indicator" style="font-size:11px; margin-top:10px; color:var(--color-gold-dark); display:none; font-weight:600;">✓ Đã đính kèm ảnh thêu hoa sen mẫu</div>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="com-filter-bar" style="display: flex; gap: 8px; margin-bottom: 24px; overflow-x: auto; padding-bottom: 8px; border-bottom: 1px solid var(--color-silk-light); scrollbar-width: none;">
+              <button class="btn-secondary active-tag-filter" style="padding: 6px 16px; font-size: 12px; border-radius: 20px; background: var(--color-gold-light); color: var(--color-charcoal); border-color: var(--color-gold-dark);" onclick="filterFeed('all', this)">Tất cả</button>
+              <button class="btn-secondary" style="padding: 6px 16px; font-size: 12px; border-radius: 20px;" onclick="filterFeed('#TácPhẩmMới', this)">🌸 Tác phẩm mới</button>
+              <button class="btn-secondary" style="padding: 6px 16px; font-size: 12px; border-radius: 20px;" onclick="filterFeed('#HỏiĐápKỹThuật', this)">❓ Hỏi đáp kỹ thuật</button>
+              <button class="btn-secondary" style="padding: 6px 16px; font-size: 12px; border-radius: 20px;" onclick="filterFeed('#GópÝNghệNhân', this)">✨ Góp ý nghệ nhân</button>
+            </div>
+
+            <!-- Dynamic Feed Container -->
+            <div id="community-feed-container">
+              <!-- Rendered by js/community.js -->
+            </div>
+          </div>
+
+          <!-- Sidebar Leaderboard (Cột Phải) -->
+          <div>
+            <div class="leaderboard-panel">
+              <h3 class="leaderboard-title" style="font-family: var(--font-display); font-size: 20px; margin-bottom: 16px; border-bottom: 1px solid var(--color-silk-dark); padding-bottom: 10px; color: var(--color-charcoal); font-weight: 700; text-align: center;">🏆 Bảng Vàng Danh Dự</h3>
+              <div class="leaderboard-row">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span class="leaderboard-rank rank-1" style="font-size: 18px;">🥇</span> 
+                  <strong style="color: var(--color-charcoal);">Minh Thư</strong>
+                </div>
+                <span style="color: var(--color-gold-dark); font-weight: 700;">1,250đ</span>
+              </div>
+              <div class="leaderboard-row">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span class="leaderboard-rank rank-2" style="font-size: 18px;">🥈</span> 
+                  <strong style="color: var(--color-charcoal);">Khánh Ly</strong>
+                </div>
+                <span style="color: #6b7280; font-weight: 600;">1,120đ</span>
+              </div>
+              <div class="leaderboard-row">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span class="leaderboard-rank rank-3" style="font-size: 18px;">🥉</span> 
+                  <strong style="color: var(--color-charcoal);">Anh Hùng</strong>
+                </div>
+                <span style="color: #6b7280; font-weight: 600;">980đ</span>
+              </div>
+              <div style="margin-top: 20px; font-size: 11px; color: #8c939a; text-align: center; line-height: 1.4; padding: 10px; background: var(--color-ivory); border: 1px dashed var(--color-silk-dark);">
+                Điểm thưởng tích lũy khi nộp bài tập đúng hạn và nhận được nhiều lượt thả tim "Tinh tế".
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- JavaScript logic modules -->
+  <script src="js/ai-analyzer.js?v=1.4"></script>
+  <script src="js/community.js?v=1.4"></script>
+  <script>
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+      const toggle = document.querySelector('.mobile-menu-toggle');
+      const drawer = document.getElementById('mobile-drawer');
+      const overlay = document.getElementById('mobile-drawer-overlay');
+      if (toggle && drawer && overlay) {
+        toggle.classList.toggle('active');
+        drawer.classList.toggle('active');
+        overlay.classList.toggle('active');
+      }
+    }
+
+    // Tab switching portal
+    function switchStudentTab(subTabName) {
+      document.querySelectorAll('.portal-menu-link').forEach(link => {
+        link.classList.remove('active');
+        const onclickAttr = link.getAttribute('onclick');
+        if (onclickAttr && onclickAttr.includes(subTabName)) {
+          link.classList.add('active');
+        }
+      });
+      document.querySelectorAll('.student-subtab-content').forEach(content => {
+        content.style.display = 'none';
+      });
+      
+      const targetTab = document.getElementById('student-tab-' + subTabName);
+      if (targetTab) {
+        targetTab.style.display = 'block';
+      }
+      
+      // Cập nhật hash trên URL mà không gây nhảy giật
+      history.replaceState(null, null, '#' + subTabName);
+      
+      // Vẽ lại feed cộng đồng nếu chuyển vào tab community
+      if (subTabName === 'community' && typeof renderFeed === 'function') {
+        renderFeed();
+      }
+    }
+
+    // Tự động kích hoạt tab dựa trên hash URL
+    window.addEventListener('DOMContentLoaded', () => {
+      const hash = window.location.hash.substring(1);
+      const validTabs = ['overview', 'classroom', 'ai', 'community', 'resources', 'affiliate', 'cert'];
+      if (hash && validTabs.includes(hash)) {
+        switchStudentTab(hash);
+      }
+    });
+
+    // Video player scanner
+    function playLessonVideo() {
+      const scanner = document.getElementById('video-scanner');
+      scanner.style.display = 'block';
+      setTimeout(() => {
+        scanner.style.display = 'none';
+        alert('Phát video bài giảng: Bài 3.2 - Kỹ thuật thêu chìm cánh sen.');
+      }, 2000);
+    }
+
+    // Resources Search
+    function filterResources() {
+      const query = document.getElementById('res-search-input').value.toLowerCase();
+      const filter = document.getElementById('res-filter-select').value;
+      const cards = document.querySelectorAll('.resource-card');
+
+      cards.forEach(card => {
+        const title = card.querySelector('h4').innerText.toLowerCase();
+        const type = card.getAttribute('data-type');
+        const matchesSearch = title.includes(query);
+        const matchesFilter = (filter === 'all' || type === filter);
+        
+        card.style.display = (matchesSearch && matchesFilter) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

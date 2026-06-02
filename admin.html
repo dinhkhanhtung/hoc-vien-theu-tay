@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bảng Quản Trị - Học viện Thêu tay Nguyễn Thị Hằng</title>
+  
+  <!-- Main CSS modules -->
+  <link rel="stylesheet" href="styles/main.css?v=1.4">
+  <link rel="stylesheet" href="styles/admin.css?v=1.4">
+  <link rel="stylesheet" href="styles/responsive.css?v=1.4">
+</head>
+<body>
+
+  <!-- ====================================================
+       HEADER / NAVIGATION BAR
+       ==================================================== -->
+  <nav class="header-nav">
+    <a href="index.html" class="logo">Nghệ Nhân <span>Nguyễn Thị Hằng</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Trang chủ</a></li>
+      <li><a href="academy.html">Cổng học tập</a></li>
+      <li><a href="community.html">Cộng đồng</a></li>
+      <li class="active"><a href="admin.html">Quản trị SaaS</a></li>
+    </ul>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <a href="academy.html" class="btn-primary nav-cta-desktop" style="padding: 8px 20px; font-size: 13px;">Vào Học viện</a>
+      <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle Menu">
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Navigation Drawer Overlay -->
+  <div class="mobile-drawer-overlay" id="mobile-drawer-overlay" onclick="toggleMobileMenu()"></div>
+  <div class="mobile-drawer" id="mobile-drawer">
+    <ul class="mobile-drawer-links">
+      <li><a href="index.html">Trang chủ</a></li>
+      <li><a href="academy.html">Cổng học tập</a></li>
+      <li><a href="community.html">Cộng đồng</a></li>
+      <li class="active"><a href="admin.html">Quản trị SaaS</a></li>
+    </ul>
+    <div style="border-top:1px solid rgba(255,255,255,0.05); padding-top:20px;">
+      <a href="academy.html" class="btn-primary" style="padding: 10px 20px; font-size: 14px; width:100%; justify-content:center; display:inline-flex;">Vào Học viện</a>
+    </div>
+  </div>
+
+  <!-- ====================================================
+       ADMIN LAYOUT
+       ==================================================== -->
+  <div class="ad-layout">
+    
+    <!-- Admin Sidebar -->
+    <aside class="ad-sidebar">
+      <div class="ad-sidebar-title" style="margin-bottom: 24px; font-size: 13px; font-weight: 700; text-transform: uppercase; color: #9ca3af; letter-spacing: 1.5px;">Bảng Vận Hành</div>
+      <ul style="list-style: none;">
+        <li><a href="#" class="ad-menu-link active" onclick="switchAdminTab('main')">📊 Tổng quan SaaS</a></li>
+        <li><a href="#" class="ad-menu-link" onclick="switchAdminTab('crm')">👥 CRM Học viên</a></li>
+      </ul>
+    </aside>
+
+    <!-- Admin Main View -->
+    <main class="ad-main" id="admin-main-view">
+      <div class="sa-header">
+        <div>
+          <h2 style="font-size: 26px; font-weight: 700; color: #111827;">Tổng quan học viện</h2>
+          <p style="color: #6b7280; font-size: 14px;">Báo cáo doanh số và tiến độ học tập toàn hệ thống.</p>
+        </div>
+        <div style="display:flex; gap:12px;">
+          <button class="btn-secondary" style="padding: 8px 16px; font-size: 13px; background: white;" onclick="alert('Đang kết xuất Excel...')">Xuất Báo cáo</button>
+        </div>
+      </div>
+
+      <!-- KPI Cards -->
+      <div class="ad-kpis">
+        <div class="kpi-card">
+          <div class="kpi-label">Doanh thu hôm nay</div>
+          <div class="kpi-val">42.800.000đ</div>
+          <div class="kpi-change up">▲ +12.4% so với hôm qua</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Học viên hoạt động</div>
+          <div class="kpi-val">1,205</div>
+          <div class="kpi-change up">▲ +4.2% tuần này</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Đơn hàng dụng cụ mới</div>
+          <div class="kpi-val">28 đơn</div>
+          <div class="kpi-change up">▲ +8 đơn mới</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Tỷ lệ hoàn thành</div>
+          <div class="kpi-val">74.2%</div>
+          <div class="kpi-change down">▼ -0.5% tháng này</div>
+        </div>
+      </div>
+
+      <!-- Charts & Activities -->
+      <div class="ad-grid-2">
+        <div class="ad-panel">
+          <div class="panel-title">
+            <span>Phân tích Doanh thu (Khóa học vs Dụng cụ thêu)</span>
+            <span style="font-size: 12px; color: #6b7280; font-weight: 400;">Đơn vị: Triệu VND</span>
+          </div>
+          <!-- Biểu đồ được vẽ động bởi js/charts.js -->
+          <div class="svg-chart-container" id="svg-chart-wrapper"></div>
+          <div style="display: flex; gap: 20px; font-size: 12px; margin-top: 12px; justify-content: center;">
+            <span style="display: flex; align-items: center; gap: 6px;">
+              <span style="display: inline-block; width: 12px; height: 12px; background: var(--color-gold-dark);"></span>
+              Khóa học trực tuyến
+            </span>
+            <span style="display: flex; align-items: center; gap: 6px;">
+              <span style="display: inline-block; width: 12px; height: 12px; background: var(--color-charcoal); border: 1px dashed white;"></span>
+              Dụng cụ & Kit thực hành
+            </span>
+          </div>
+        </div>
+
+        <!-- Recent activities -->
+        <div class="ad-panel">
+          <div class="panel-title">Hoạt động lớp học mới</div>
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div style="display: flex; gap: 12px; align-items: center; font-size: 13px;">
+              <div class="avatar" style="width: 32px; height: 32px; font-size: 11px;">AH</div>
+              <div>
+                <strong>Lê Anh Hùng</strong> nộp bài thi Thêu Sen
+                <div style="color: #6b7280; font-size: 11px; margin-top: 2px;">AI Chấm: 89/100 • Chờ duyệt</div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: center; font-size: 13px;">
+              <div class="avatar" style="width: 32px; height: 32px; font-size: 11px; background: #e5e7eb;">MT</div>
+              <div>
+                <strong>Nguyễn Minh Thư</strong> đã được cấp chứng chỉ
+                <div style="color: #6b7280; font-size: 11px; margin-top: 2px;">Chứng chỉ blockchain cấp tự động • 15 phút trước</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Admin CRM View -->
+    <main class="ad-main" id="admin-crm-view" style="display:none;">
+      <div class="sa-header">
+        <div>
+          <h2 style="font-size: 26px; font-weight: 700; color: #111827;">CRM & Quản lý Học viên</h2>
+          <p style="color: #6b7280; font-size: 14px;">Theo dõi chi tiết điểm số AI và giá trị mua sắm dụng cụ của học viên.</p>
+        </div>
+      </div>
+      <div class="ad-panel">
+        <table class="ad-table">
+          <thead>
+            <tr>
+              <th>Học viên</th>
+              <th>Khóa học đang học</th>
+              <th>Tiến độ</th>
+              <th>Đơn hàng dụng cụ</th>
+              <th>AI Stitch Rating</th>
+              <th>Trạng thái</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Nguyễn Minh Thư</strong><br><span style="font-size:11px; color:#6b7280;">minhthu@gmail.com</span></td>
+              <td>Thêu Sen Cổ Điển</td>
+              <td>68%</td>
+              <td>3.200.000đ</td>
+              <td style="color:var(--color-success); font-weight:700;">94/100</td>
+              <td><span class="badge-status active">Đang học tích cực</span></td>
+            </tr>
+            <tr>
+              <td><strong>Lê Anh Hùng</strong><br><span style="font-size:11px; color:#6b7280;">anhhung@yahoo.com</span></td>
+              <td>Kỹ thuật thêu cơ bản</td>
+              <td>100%</td>
+              <td>1.200.000đ</td>
+              <td style="color:var(--color-warning); font-weight:700;">89/100</td>
+              <td><span class="badge-status review">Chờ duyệt thi tốt nghiệp</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript logic modules -->
+  <script src="js/charts.js?v=1.4"></script>
+  <script>
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+      const toggle = document.querySelector('.mobile-menu-toggle');
+      const drawer = document.getElementById('mobile-drawer');
+      const overlay = document.getElementById('mobile-drawer-overlay');
+      if (toggle && drawer && overlay) {
+        toggle.classList.toggle('active');
+        drawer.classList.toggle('active');
+        overlay.classList.toggle('active');
+      }
+    }
+
+    // Tab switching admin
+    function switchAdminTab(tabName) {
+      document.querySelectorAll('.ad-menu-link').forEach(link => {
+        link.classList.remove('active');
+        if(link.getAttribute('onclick') && link.getAttribute('onclick').includes(tabName)) {
+          link.classList.add('active');
+        }
+      });
+
+      if(tabName === 'main') {
+        document.getElementById('admin-main-view').style.display = 'block';
+        document.getElementById('admin-crm-view').style.display = 'none';
+        // Vẽ lại biểu đồ khi quay lại tab
+        if (typeof drawAdminCharts === 'function') drawAdminCharts();
+      } else {
+        document.getElementById('admin-main-view').style.display = 'none';
+        document.getElementById('admin-crm-view').style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>
