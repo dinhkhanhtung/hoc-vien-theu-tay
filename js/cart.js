@@ -61,13 +61,24 @@ function checkoutCart() {
     return;
   }
   let sum = 0;
-  cart.forEach(item => sum += item.price);
+  let itemsHtml = '';
+  cart.forEach(item => {
+    sum += item.price;
+    itemsHtml += `
+      <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:13px;">
+        <span>${item.name}</span>
+        <strong style="color:var(--color-charcoal);">${item.price.toLocaleString('vi-VN')}đ</strong>
+      </div>
+    `;
+  });
   
   const modalAmount = document.getElementById('modal-payment-amount');
+  const modalItems = document.getElementById('checkout-items-list');
   const modal = document.getElementById('payment-modal');
   
   if (modalAmount && modal) {
     modalAmount.innerText = sum.toLocaleString('vi-VN') + 'đ';
+    if(modalItems) modalItems.innerHTML = itemsHtml;
     modal.classList.add('active');
   }
 }
@@ -79,7 +90,24 @@ function closePaymentModal(success) {
     modal.classList.remove('active');
   }
   if (success) {
-    alert('Cảm ơn bạn! Hệ thống ngân hàng VietQR đã tự động ghi nhận giao dịch thành công. Trợ giảng của Nghệ nhân Nguyễn Thị Hằng sẽ liên hệ đóng gói chuyển phát học liệu sớm nhất.');
+    // Kiểm tra trạng thái Auto-Approve từ Admin
+    const isAutoApprove = localStorage.getItem('autoApproveMode') === 'true';
+    if (isAutoApprove) {
+      alert('Thanh toán thành công! Hệ thống Auto-Approve (Duyệt tự động) đã ghi nhận giao dịch của bạn. Quyền lợi khóa học đã được mở khóa.');
+    } else {
+      alert('Đã xác nhận gửi yêu cầu chuyển khoản. Đơn hàng của bạn đang trong trạng thái CHỜ DUYỆT. Nghệ nhân Nguyễn Thị Hằng sẽ kiểm tra biến động số dư và duyệt đơn sớm nhất!');
+    }
+    
+    // Add pending order to localStorage for admin to see
+    let pendingOrders = JSON.parse(localStorage.getItem('pendingOrders')) || [];
+    pendingOrders.push({
+      date: new Date().toLocaleString(),
+      items: cart,
+      total: cart.reduce((a, b) => a + b.price, 0),
+      status: isAutoApprove ? 'APPROVED' : 'PENDING'
+    });
+    localStorage.setItem('pendingOrders', JSON.stringify(pendingOrders));
+
     cart = [];
     saveCart();
     updateCartUI();

@@ -2,14 +2,14 @@
    HỌC VIỆN THÊU TAY NGUYỄN THỊ HẰNG - MAIN CSS
    ---------------------------------------------------- */
 :root {
-  /* Colors */
-  --color-ivory: #FCFAF6;
-  --color-silk-light: #F4EFE6;
-  --color-silk-dark: #EADEC9;
-  --color-charcoal: #12161A;
-  --color-charcoal-light: #1E2329;
-  --color-gold-light: #DFBA73;
-  --color-gold-dark: #B88E3D;
+  /* Colors (Tinh chỉnh theo Taste Skill Premium Artisan) */
+  --color-ivory: #FDFCF9;
+  --color-silk-light: #F6F3EC;
+  --color-silk-dark: #E6DBC6;
+  --color-charcoal: #1C1917; /* Stone 900 - mềm hơn đen tuyền */
+  --color-charcoal-light: #292524;
+  --color-gold-light: #C9A25A;
+  --color-gold-dark: #A57E37;
   --color-emerald: #1F3F32;
   --color-burgundy: #581C1C;
   --color-success: #2E7D32;
@@ -18,14 +18,14 @@
   
   /* Fonts */
   --font-display: 'Cormorant Garamond', serif;
-  --font-ui: 'Plus Jakarta Sans', sans-serif;
+  --font-ui: 'Outfit', sans-serif;
   
-  /* Shadows & Radius */
-  --shadow-sm: 0 2px 8px rgba(18, 22, 26, 0.04);
-  --shadow-md: 0 4px 20px rgba(18, 22, 26, 0.08);
-  --shadow-lg: 0 10px 30px rgba(18, 22, 26, 0.12);
+  /* Shadows & Radius (Taste Skill: Tinted shadows) */
+  --shadow-sm: 0 4px 12px rgba(28, 25, 23, 0.03);
+  --shadow-md: 0 8px 24px rgba(28, 25, 23, 0.05);
+  --shadow-lg: 0 16px 40px rgba(201, 162, 90, 0.08); /* Tinted gold shadow */
   
-  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1); /* Spring-like curve */
 }
 
 html {
@@ -44,8 +44,29 @@ body {
   background-color: var(--color-ivory);
   color: var(--color-charcoal);
   overflow-x: hidden;
-  line-height: 1.5;
-  padding-top: 80px; /* Nhường chỗ cho Header cố định */
+  line-height: 1.6;
+  padding-top: 80px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Taste Skill: Noise Overlay for texture */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Accessibility Focus Ring */
+*:focus-visible {
+  outline: 2px solid var(--color-gold-light);
+  outline-offset: 2px;
 }
 
 /* Header / Navigation bar chung */
@@ -104,7 +125,7 @@ body {
   border: 1px solid var(--color-gold-light);
   padding: 12px 28px;
   font-family: var(--font-ui);
-  font-weight: 600;
+  font-weight: 500;
   font-size: 14px;
   cursor: pointer;
   transition: var(--transition-smooth);
@@ -113,13 +134,17 @@ body {
   gap: 8px;
   letter-spacing: 0.5px;
   text-decoration: none;
+  border-radius: 6px;
 }
 
 .btn-primary:hover {
-  background: var(--color-gold-dark);
+  background: var(--color-charcoal-light);
   border-color: var(--color-gold-dark);
-  box-shadow: 0 0 12px rgba(223, 186, 115, 0.5);
-  color: var(--color-charcoal);
+  box-shadow: 0 4px 16px rgba(201, 162, 90, 0.2);
+}
+
+.btn-primary:active {
+  transform: translateY(1px) scale(0.98);
 }
 
 .btn-secondary {
@@ -128,7 +153,7 @@ body {
   border: 1px solid var(--color-gold-light);
   padding: 12px 28px;
   font-family: var(--font-ui);
-  font-weight: 600;
+  font-weight: 500;
   font-size: 14px;
   cursor: pointer;
   transition: var(--transition-smooth);
@@ -136,30 +161,36 @@ body {
   align-items: center;
   gap: 8px;
   text-decoration: none;
+  border-radius: 6px;
 }
 
 .btn-secondary:hover {
-  background: var(--color-silk-light);
+  background: rgba(201, 162, 90, 0.05);
+}
+
+.btn-secondary:active {
+  transform: translateY(1px) scale(0.98);
 }
 
 /* Section Title */
 .section-title-luxury {
   font-family: var(--font-display);
-  font-size: 38px;
+  font-size: 42px;
   font-weight: 600;
   color: var(--color-charcoal);
   text-align: center;
   position: relative;
   margin-bottom: 48px;
+  letter-spacing: -0.02em; /* Negative tracking cho tiêu đề lớn */
 }
 
 .section-title-luxury::after {
   content: '';
   display: block;
-  width: 60px;
+  width: 40px;
   height: 2px;
-  background: var(--color-gold-light);
-  margin: 12px auto 0 auto;
+  background: var(--color-gold-dark);
+  margin: 16px auto 0 auto;
 }
 
 /* Modal Payment styles */

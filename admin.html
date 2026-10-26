@@ -5,12 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bảng Quản Trị - Học viện Thêu tay Nguyễn Thị Hằng</title>
   
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
   <!-- Main CSS modules -->
   <link rel="stylesheet" href="styles/main.css?v=1.4">
   <link rel="stylesheet" href="styles/admin.css?v=1.4">
   <link rel="stylesheet" href="styles/responsive.css?v=1.4">
 </head>
 <body>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
 
   <!-- ====================================================
        HEADER / NAVIGATION BAR
@@ -20,7 +26,7 @@
     <ul class="nav-links">
       <li><a href="index.html">Trang chủ</a></li>
       <li><a href="academy.html">Cổng học tập</a></li>
-      <li><a href="community.html">Cộng đồng</a></li>
+      <li><a href="academy.html#community">Cộng đồng</a></li>
       <li class="active"><a href="admin.html">Quản trị SaaS</a></li>
     </ul>
     <div style="display: flex; align-items: center; gap: 12px;">
@@ -37,7 +43,7 @@
     <ul class="mobile-drawer-links">
       <li><a href="index.html">Trang chủ</a></li>
       <li><a href="academy.html">Cổng học tập</a></li>
-      <li><a href="community.html">Cộng đồng</a></li>
+      <li><a href="academy.html#community">Cộng đồng</a></li>
       <li class="active"><a href="admin.html">Quản trị SaaS</a></li>
     </ul>
     <div style="border-top:1px solid rgba(255,255,255,0.05); padding-top:20px;">
@@ -52,11 +58,36 @@
     
     <!-- Admin Sidebar -->
     <aside class="ad-sidebar">
-      <div class="ad-sidebar-title" style="margin-bottom: 24px; font-size: 13px; font-weight: 700; text-transform: uppercase; color: #9ca3af; letter-spacing: 1.5px;">Bảng Vận Hành</div>
-      <ul style="list-style: none;">
-        <li><a href="#" class="ad-menu-link active" onclick="switchAdminTab('main')">📊 Tổng quan SaaS</a></li>
-        <li><a href="#" class="ad-menu-link" onclick="switchAdminTab('crm')">👥 CRM Học viên</a></li>
-      </ul>
+      <div>
+        <div class="ad-sidebar-title" style="margin-bottom: 24px; font-size: 13px; font-weight: 700; text-transform: uppercase; color: #9ca3af; letter-spacing: 1.5px;">Bảng Vận Hành</div>
+        
+        <!-- AUTO APPROVE TOGGLE -->
+        <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 8px; margin-bottom: 24px; display:flex; align-items:center; justify-content:space-between;">
+          <div style="font-size: 12px; color:white;">
+            <div style="font-weight:600; margin-bottom:4px;">Chế độ Ban đêm</div>
+            <div style="color:#9ca3af; font-size:10px;">Tự động duyệt thanh toán</div>
+          </div>
+          <label class="switch" style="position:relative; display:inline-block; width:34px; height:20px;">
+            <input type="checkbox" id="auto-approve-toggle" style="opacity:0; width:0; height:0;" onchange="toggleAutoApprove(this)">
+            <span class="slider" style="position:absolute; cursor:pointer; top:0; left:0; right:0; bottom:0; background-color:#4b5563; transition:.4s; border-radius:20px;">
+              <span class="slider-dot" style="position:absolute; content:''; height:14px; width:14px; left:3px; bottom:3px; background-color:white; transition:.4s; border-radius:50%;"></span>
+            </span>
+          </label>
+        </div>
+
+        <ul style="list-style: none;">
+          <li><a href="#" class="ad-menu-link active" onclick="switchAdminTab('main')">📊 Tổng quan SaaS</a></li>
+          <li><a href="#" class="ad-menu-link" onclick="switchAdminTab('crm')">👥 CRM Học viên</a></li>
+          <li style="margin-top: 16px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 16px;">
+            <a href="#" class="ad-menu-link" onclick="switchAdminTab('moderation')">✅ Kiểm duyệt Cộng đồng</a>
+          </li>
+        </ul>
+      </div>
+      <div style="padding-top: 16px; font-size: 11px; color: #6b7280; border-top: 1px solid #e5e7eb; text-align: center; line-height: 1.5;">
+        &copy; Nghệ Nhân Nguyễn Thị Hằng<br>
+        0868.265.665<br>
+        Hoành 2, Phúc Sơn, Hà Nội
+      </div>
     </aside>
 
     <!-- Admin Main View -->
@@ -99,7 +130,7 @@
       <div class="ad-grid-2">
         <div class="ad-panel">
           <div class="panel-title">
-            <span>Phân tích Doanh thu (Khóa học vs Dụng cụ thêu)</span>
+            <span>Phân tích Doanh thu (Khóa học vs Video Lẻ vs Dụng cụ)</span>
             <span style="font-size: 12px; color: #6b7280; font-weight: 400;">Đơn vị: Triệu VND</span>
           </div>
           <!-- Biểu đồ được vẽ động bởi js/charts.js -->
@@ -132,6 +163,54 @@
               <div>
                 <strong>Nguyễn Minh Thư</strong> đã được cấp chứng chỉ
                 <div style="color: #6b7280; font-size: 11px; margin-top: 2px;">Chứng chỉ blockchain cấp tự động • 15 phút trước</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Admin Moderation View (TÍNH NĂNG MỚI) -->
+    <main class="ad-main" id="admin-moderation-view" style="display:none;">
+      <div class="sa-header">
+        <div>
+          <h2 style="font-size: 26px; font-weight: 700; color: #111827;">Kiểm Duyệt Cộng Đồng</h2>
+          <p style="color: #6b7280; font-size: 14px;">Duyệt tác phẩm tốt nghiệp để đưa lên Trang chủ và phê duyệt mẫu rập mới.</p>
+        </div>
+      </div>
+
+      <div class="ad-grid-2">
+        <!-- Duyệt Tác phẩm -->
+        <div class="ad-panel">
+          <div class="panel-title">Tác phẩm chờ duyệt lên Landing Page</div>
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <!-- Artwork 1 -->
+            <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px;">
+              <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&width=400&auto=format&fit=crop" style="width:100%; height:160px; object-fit:cover; border-radius:4px; margin-bottom:12px;">
+              <div style="font-weight:600; font-size:14px;">Bức Thêu Tứ Quý</div>
+              <div style="color:#6b7280; font-size:12px; margin-bottom:12px;">Học viên: Phương Thảo - AI Score: 95/100</div>
+              <div style="display:flex; gap:8px;">
+                <button class="btn-primary" style="flex:1; padding:6px; font-size:12px; justify-content:center;">✅ Phê duyệt</button>
+                <button class="btn-secondary" style="flex:1; padding:6px; font-size:12px; justify-content:center;">❌ Từ chối</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Duyệt Rập Mẫu -->
+        <div class="ad-panel">
+          <div class="panel-title">Rập mẫu thêu chờ đóng góp</div>
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <!-- Pattern 1 -->
+            <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px; display:flex; gap:16px; align-items:center;">
+              <div style="width:60px; height:60px; background:#f3f4f6; border-radius:4px; display:flex; align-items:center; justify-content:center; border:1px dashed #d1d5db; font-size:11px; color:#9ca3af;">PDF</div>
+              <div style="flex:1;">
+                <div style="font-weight:600; font-size:14px;">Rập Mẫu Móng Chân Rồng</div>
+                <div style="color:#6b7280; font-size:12px; margin-bottom:8px;">Người gửi: Văn An</div>
+                <div style="display:flex; gap:8px;">
+                  <button class="btn-primary" style="padding:4px 12px; font-size:11px;">✅ Đăng</button>
+                  <button class="btn-secondary" style="padding:4px 12px; font-size:11px;">Xem thử</button>
+                </div>
               </div>
             </div>
           </div>
@@ -197,23 +276,50 @@
       }
     }
 
+  <script>
     // Tab switching admin
     function switchAdminTab(tabName) {
-      document.querySelectorAll('.ad-menu-link').forEach(link => {
-        link.classList.remove('active');
-        if(link.getAttribute('onclick') && link.getAttribute('onclick').includes(tabName)) {
-          link.classList.add('active');
-        }
-      });
-
+      // Ẩn tất cả views
+      document.getElementById('admin-main-view').style.display = 'none';
+      document.getElementById('admin-crm-view').style.display = 'none';
+      document.getElementById('admin-moderation-view').style.display = 'none';
+      
+      // Hiện view được chọn
       if(tabName === 'main') {
         document.getElementById('admin-main-view').style.display = 'block';
-        document.getElementById('admin-crm-view').style.display = 'none';
-        // Vẽ lại biểu đồ khi quay lại tab
         if (typeof drawAdminCharts === 'function') drawAdminCharts();
+      }
+      if(tabName === 'crm') document.getElementById('admin-crm-view').style.display = 'block';
+      if(tabName === 'moderation') document.getElementById('admin-moderation-view').style.display = 'block';
+      
+      // Update sidebar active class
+      const links = document.querySelectorAll('.ad-menu-link');
+      links.forEach(l => l.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+    // Load auto approve state
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggle = document.getElementById('auto-approve-toggle');
+      if (toggle) {
+        toggle.checked = localStorage.getItem('autoApproveMode') === 'true';
+        updateSliderVisual(toggle);
+      }
+    });
+
+    function toggleAutoApprove(checkbox) {
+      localStorage.setItem('autoApproveMode', checkbox.checked ? 'true' : 'false');
+      updateSliderVisual(checkbox);
+    }
+
+    function updateSliderVisual(checkbox) {
+      const slider = checkbox.nextElementSibling;
+      const dot = slider.querySelector('.slider-dot');
+      if (checkbox.checked) {
+        slider.style.backgroundColor = 'var(--color-gold-dark)';
+        dot.style.transform = 'translateX(14px)';
       } else {
-        document.getElementById('admin-main-view').style.display = 'none';
-        document.getElementById('admin-crm-view').style.display = 'block';
+        slider.style.backgroundColor = '#4b5563';
+        dot.style.transform = 'translateX(0)';
       }
     }
   </script>

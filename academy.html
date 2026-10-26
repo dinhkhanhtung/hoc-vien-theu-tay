@@ -5,12 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cổng Học Viên - Học viện Thêu tay Nghệ thuật Nguyễn Thị Hằng</title>
   
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
   <!-- Main CSS modules -->
   <link rel="stylesheet" href="styles/main.css?v=1.4">
   <link rel="stylesheet" href="styles/academy.css?v=1.4">
   <link rel="stylesheet" href="styles/responsive.css?v=1.4">
 </head>
 <body>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
 
   <!-- ====================================================
        HEADER / NAVIGATION BAR
@@ -20,7 +26,7 @@
     <ul class="nav-links">
       <li><a href="index.html">Trang chủ</a></li>
       <li class="active"><a href="academy.html">Cổng học tập</a></li>
-      <li><a href="community.html">Cộng đồng</a></li>
+      <li><a href="#community" onclick="switchStudentTab('community')">Cộng đồng</a></li>
       <li><a href="admin.html">Quản trị SaaS</a></li>
     </ul>
     <div style="display: flex; align-items: center; gap: 12px;">
@@ -92,6 +98,21 @@
               <span>📜</span> Thi & Chứng chỉ
             </a>
           </li>
+          <li class="portal-menu-item" style="margin-top: 16px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 16px;">
+            <a href="#" class="portal-menu-link" onclick="switchStudentTab('trial')" style="color: var(--color-gold-light);">
+              <span>🎁</span> Phòng Học Thử
+            </a>
+          </li>
+          <li class="portal-menu-item">
+            <a href="#" class="portal-menu-link" onclick="switchStudentTab('singles')">
+              <span>🎞️</span> Thư viện Video Lẻ
+            </a>
+          </li>
+          <li class="portal-menu-item">
+            <a href="#" class="portal-menu-link" onclick="switchStudentTab('gallery')">
+              <span>🖼️</span> Triển Lãm & Đóng Góp
+            </a>
+          </li>
         </ul>
       </div>
       <div class="portal-profile-bar">
@@ -100,6 +121,11 @@
           <div class="sa-profile-name" style="color:white; font-weight:600;">Nguyễn Minh Thư</div>
           <div class="sa-profile-role" style="color:var(--color-gold-light); font-size:11px;">Học viên xuất sắc</div>
         </div>
+      </div>
+      <div style="padding: 16px 20px; font-size: 11px; color: #6b7280; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; line-height: 1.5;">
+        &copy; Nghệ Nhân Nguyễn Thị Hằng<br>
+        0868.265.665<br>
+        Hoành 2, Phúc Sơn, Hà Nội
       </div>
     </aside>
 
@@ -143,6 +169,120 @@
             <h4 style="font-size: 16px; margin-bottom: 8px;">Kiểm tra độ đều mũi thêu bằng AI</h4>
             <p style="color: #6c757d; font-size: 13px; margin-bottom: 16px;">Tải ảnh tác phẩm thực hành của bạn lên để hệ thống AI đánh giá độ đều mũi chỉ.</p>
             <button class="btn-primary" style="padding: 6px 16px; font-size: 12px;" onclick="switchStudentTab('ai')">Chạy quét AI</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TÍNH NĂNG MỚI: PHÒNG HỌC THỬ (TRIAL) -->
+      <div id="student-tab-trial" class="student-subtab-content" style="display:none;">
+        <div class="sa-header">
+          <div class="sa-title-welcome">
+            <h2>Phòng Học Thử (Trải nghiệm miễn phí)</h2>
+            <p>Bài học: Kỹ thuật xỏ kim và thắt nút giấu chỉ cơ bản trên lụa tơ tằm.</p>
+          </div>
+        </div>
+        <div style="background: white; border: 1px solid var(--color-silk-dark); padding: 20px; border-radius: 16px; box-shadow: var(--shadow-sm); margin-bottom: 24px;">
+          <!-- Video player placeholder -->
+          <div style="width: 100%; aspect-ratio: 16/9; background: var(--color-charcoal); border-radius: 12px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-md);">
+            <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&width=1200&auto=format&fit=crop" style="width:100%; height:100%; object-fit:cover; opacity:0.6; position:absolute;" alt="Video">
+            <div style="width:80px; height:80px; border-radius:50%; background:var(--color-gold-light); display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:10; box-shadow:0 0 20px rgba(201,162,90,0.5); transition:transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+              <span style="color:var(--color-charcoal); font-size:24px; margin-left:4px;">▶</span>
+            </div>
+            <div style="position:absolute; bottom:20px; left:20px; z-index:10; color:white; font-family:var(--font-display); font-size:24px; font-weight:600;">Bài 1: Xỏ kim & Thắt nút giấu chỉ</div>
+          </div>
+        </div>
+        
+        <div style="display:flex; gap:20px;">
+          <div style="flex:1; background: var(--color-ivory); border: 1px solid var(--color-silk-dark); border-radius: 12px; padding: 24px; text-align:center;">
+            <h4 style="font-size:16px; margin-bottom:12px;">Tài liệu đính kèm</h4>
+            <p style="font-size:13px; color:#6b7280; margin-bottom:16px;">Tải mẫu in PDF bài tập thắt nút để luyện tập trước.</p>
+            <button class="btn-secondary" style="font-size:13px;">Tải Mẫu Rập (PDF)</button>
+          </div>
+          <div style="flex:2; background: var(--color-charcoal); border-radius: 12px; padding: 24px; color:white; display:flex; align-items:center; justify-content:space-between; box-shadow:var(--shadow-md);">
+            <div>
+              <h4 style="font-size:18px; color:var(--color-gold-light); margin-bottom:8px;">Mở Khóa Toàn Bộ Khóa Học</h4>
+              <p style="font-size:13px; color:#a0a0a0; max-width:300px;">Trải nghiệm đầy đủ 45 bài giảng, hỗ trợ AI sửa lỗi và nhận khung thêu lụa tặng kèm tận nhà.</p>
+            </div>
+            <button class="btn-primary" style="background:var(--color-gold-light); color:var(--color-charcoal); border-color:var(--color-gold-light);">Đăng Ký Ngay</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TÍNH NĂNG MỚI: THƯ VIỆN VIDEO LẺ (SINGLES) -->
+      <div id="student-tab-singles" class="student-subtab-content" style="display:none;">
+        <div class="sa-header">
+          <div class="sa-title-welcome">
+            <h2>Thư Viện Kỹ Thuật (Video Lẻ)</h2>
+            <p>Các video ngắn (Micro-learning) tập trung giải quyết 1 vấn đề chuyên sâu.</p>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px;">
+          <!-- Purchased Video -->
+          <div style="background: white; border: 1px solid var(--color-gold-light); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-md);">
+            <div style="position:relative; height:160px;">
+              <img src="https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?q=80&width=400&auto=format&fit=crop" style="width:100%; height:100%; object-fit:cover;">
+              <div style="position:absolute; inset:0; background:rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center;">
+                <div style="width:40px; height:40px; background:rgba(255,255,255,0.9); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--color-charcoal); cursor:pointer;">▶</div>
+              </div>
+            </div>
+            <div style="padding: 20px;">
+              <h4 style="font-size:15px; margin-bottom:8px;">Kỹ Thuật Gỡ Rối Lụa</h4>
+              <p style="font-size:12px; color:#2E7D32; font-weight:600;">Đã sở hữu</p>
+            </div>
+          </div>
+          <!-- Locked Video -->
+          <div style="background: white; border: 1px solid var(--color-silk-dark); border-radius: 16px; overflow: hidden;">
+            <div style="position:relative; height:160px;">
+              <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&width=400&auto=format&fit=crop" style="width:100%; height:100%; object-fit:cover; filter:grayscale(80%);">
+              <div style="position:absolute; inset:0; background:rgba(0,0,0,0.6); display:flex; align-items:center; justify-content:center;">
+                <span style="font-size:24px;">🔒</span>
+              </div>
+            </div>
+            <div style="padding: 20px;">
+              <h4 style="font-size:15px; margin-bottom:8px;">Đâm Xô Chuyển Màu Sen</h4>
+              <p style="font-size:12px; color:#6b7280; font-weight:600;">199.000đ</p>
+              <button class="btn-secondary" style="width:100%; padding:6px; font-size:12px; margin-top:12px; justify-content:center;">Mua ngay</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TÍNH NĂNG MỚI: TRIỂN LÃM & ĐÓNG GÓP MẪU THÊU -->
+      <div id="student-tab-gallery" class="student-subtab-content" style="display:none;">
+        <div class="sa-header" style="flex-direction:row; align-items:flex-start; justify-content:space-between;">
+          <div class="sa-title-welcome">
+            <h2>Triển Lãm & Đóng Góp Mẫu Thêu</h2>
+            <p>Nơi cộng đồng lưu giữ rập mẫu và khoe những tác phẩm tốt nghiệp.</p>
+          </div>
+          <button class="btn-primary" onclick="alert('Mở form Tải lên tác phẩm')">📤 Tải Lên Tác Phẩm/Mẫu</button>
+        </div>
+        
+        <h3 style="font-family:var(--font-display); font-size:22px; margin-bottom:20px; border-bottom:2px solid var(--color-gold-light); padding-bottom:8px; display:inline-block;">Kho Rập Mẫu (Cộng đồng đóng góp)</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; margin-bottom: 40px;">
+          <!-- Item Mẫu -->
+          <div style="background:white; border-radius:12px; padding:16px; border:1px solid var(--color-silk-dark);">
+            <div style="height:120px; background:var(--color-silk-light); border-radius:8px; margin-bottom:12px; border:1px dashed var(--color-gold-dark); display:flex; align-items:center; justify-content:center; color:#6b7280; font-size:12px;">(Bản vẽ Vector Rồng Lý)</div>
+            <h4 style="font-size:14px; margin-bottom:4px;">Rập Rồng Lý Cuộn</h4>
+            <p style="font-size:11px; color:#6b7280; margin-bottom:12px;">Đóng góp bởi: Lê Nam</p>
+            <button class="btn-secondary" style="width:100%; font-size:12px; padding:6px; justify-content:center;">Tải file PDF</button>
+          </div>
+          <!-- Item Mẫu 2 -->
+          <div style="background:white; border-radius:12px; padding:16px; border:1px solid var(--color-silk-dark);">
+            <div style="height:120px; background:var(--color-silk-light); border-radius:8px; margin-bottom:12px; border:1px dashed var(--color-gold-dark); display:flex; align-items:center; justify-content:center; color:#6b7280; font-size:12px;">(Bản vẽ Hoa Sen)</div>
+            <h4 style="font-size:14px; margin-bottom:4px;">Rập Hoa Sen Nở Rộ</h4>
+            <p style="font-size:11px; color:#6b7280; margin-bottom:12px;">Đóng góp bởi: Mai Trang</p>
+            <button class="btn-secondary" style="width:100%; font-size:12px; padding:6px; justify-content:center;">Tải file PDF</button>
+          </div>
+        </div>
+
+        <h3 style="font-family:var(--font-display); font-size:22px; margin-bottom:20px; border-bottom:2px solid var(--color-gold-light); padding-bottom:8px; display:inline-block;">Phòng Trưng Bày Tác Phẩm</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
+          <div style="border-radius: 12px; overflow:hidden; position:relative;">
+            <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&width=400&auto=format&fit=crop" style="width:100%; aspect-ratio:4/3; object-fit:cover;">
+            <div style="position:absolute; bottom:0; left:0; right:0; background:linear-gradient(to top, rgba(0,0,0,0.8), transparent); padding:20px 16px 16px 16px; color:white;">
+              <div style="font-weight:600; font-size:14px;">Bức Thêu Tứ Quý</div>
+              <div style="font-size:11px; opacity:0.8;">Học viên: Phương Thảo</div>
+            </div>
           </div>
         </div>
       </div>

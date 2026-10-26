@@ -53,11 +53,12 @@
 
 .lp-hero-image-frame {
   border: 1px solid var(--color-gold-light);
-  padding: 16px;
+  padding: 12px;
   background: white;
   box-shadow: var(--shadow-lg);
   transform: rotate(2deg);
   transition: var(--transition-smooth);
+  border-radius: 16px;
 }
 
 .lp-hero-image-frame:hover {
@@ -81,6 +82,7 @@
   box-shadow: var(--shadow-md);
   border-left: 4px solid var(--color-gold-light);
   z-index: 10;
+  border-radius: 12px;
 }
 
 .lp-hero-badge-title {
@@ -110,6 +112,7 @@
   flex: 1;
   border: 8px solid white;
   box-shadow: var(--shadow-md);
+  border-radius: 16px;
 }
 
 .lp-story-content {
@@ -151,6 +154,7 @@
   box-shadow: var(--shadow-sm);
   transition: var(--transition-smooth);
   position: relative;
+  border-radius: 16px;
 }
 
 .course-card:hover {
@@ -180,14 +184,16 @@
   position: absolute;
   top: 16px;
   left: 16px;
-  background: rgba(18, 22, 26, 0.85);
+  background: rgba(28, 25, 23, 0.85); /* Thay đen bằng charcoal */
   color: var(--color-gold-light);
-  padding: 4px 12px;
+  padding: 6px 14px;
   font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   font-weight: 600;
   border: 1px solid var(--color-gold-light);
+  border-radius: 8px;
+  backdrop-filter: blur(4px); /* Hiệu ứng kính */
 }
 
 .course-card-body {
@@ -242,8 +248,9 @@
   margin: 0 auto;
   background: white;
   border: 1px solid var(--color-silk-dark);
-  padding: 24px;
+  padding: 16px;
   box-shadow: var(--shadow-md);
+  border-radius: 20px;
 }
 
 .slider-view {
@@ -302,12 +309,14 @@
 .slider-label {
   position: absolute;
   bottom: 16px;
-  background: rgba(18, 22, 26, 0.8);
+  background: rgba(28, 25, 23, 0.85);
   color: white;
-  padding: 4px 12px;
+  padding: 6px 14px;
   font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
 }
 
 .slider-label.before { left: 16px; }
@@ -322,6 +331,43 @@
   color: var(--color-gold-dark);
 }
 
+/* ====================================================
+   GSAP HORIZONTAL GALLERY
+   ==================================================== */
+.gallery-card {
+  width: 600px;
+  height: 450px;
+  flex-shrink: 0;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-card:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 30px 20px 20px 20px;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+}
+
 /* FAQ & Footers */
 .lp-faq {
   padding: 100px 20%;
@@ -334,6 +380,13 @@
   margin-bottom: 16px;
   padding: 24px;
   cursor: pointer;
+  border-radius: 12px;
+  transition: var(--transition-smooth);
+}
+
+.faq-item:hover {
+  border-color: var(--color-gold-light);
+  box-shadow: var(--shadow-sm);
 }
 
 .faq-question {
@@ -444,6 +497,7 @@
   flex-direction: column;
   justify-content: space-between;
   transition: var(--transition-smooth);
+  border-radius: 16px;
 }
 
 .shop-card:hover {
@@ -493,4 +547,60 @@
 .cart-item span {
   font-weight: 600;
   font-size: 14px;
+}
+
+/* ====================================================
+   FLOATING CONTACT WIDGET & ADD TO CART ICON
+   ==================================================== */
+.btn-add-cart-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--color-charcoal);
+  color: var(--color-gold-light);
+  border: none;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+  padding: 0;
+  line-height: 1;
+}
+.btn-add-cart-icon:hover {
+  background-color: var(--color-gold-dark);
+  color: white;
+  transform: scale(1.1);
+}
+
+.floating-contact-widget {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 1000;
+}
+
+.contact-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: block;
+}
+
+.contact-icon:hover {
+  transform: scale(1.15) translateY(-5px);
+}
+
+.contact-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
